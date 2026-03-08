@@ -19,7 +19,14 @@ const Toggle = () => {
       switchTheme();
       return;
     }
-    document.startViewTransition(switchTheme);
+
+    const root = document.documentElement;
+    root.classList.add("theme-transition");
+
+    const transition = document.startViewTransition(switchTheme);
+    transition.finished.finally(() => {
+      root.classList.remove("theme-transition");
+    });
   };
 
   return (

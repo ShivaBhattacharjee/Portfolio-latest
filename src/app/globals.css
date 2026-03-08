@@ -10,6 +10,7 @@
 :root {
   --selection-background: black;
   --selection-color: white;
+  --expo-out: cubic-bezier(0.16, 1, 0.3, 1);
 }
 .dark {
   --selection-background: white;
@@ -111,67 +112,29 @@ h6 {
 }
 
 @supports (view-transition-name: none) {
-  ::view-transition-old(root),
-  ::view-transition-new(root) {
-    animation-duration: 0.3s;
-    animation-timing-function: steps(4, jump-none);
+  .theme-transition::view-transition-group(root) {
+    animation-timing-function: var(--expo-out);
   }
 
-  ::view-transition-old(root) {
-    animation-name: wipe-out;
+  .theme-transition::view-transition-new(root) {
+    mask: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><defs><filter id="blur"><feGaussianBlur stdDeviation="2"/></filter></defs><circle cx="0" cy="0" r="18" fill="white" filter="url(%23blur)"/></svg>') top left / 0 no-repeat;
+    mask-origin: content-box;
+    animation: scale 1s;
+    animation-fill-mode: both;
+    transform-origin: top left;
   }
 
-  ::view-transition-new(root) {
-    animation-name: wipe-in;
+  .theme-transition::view-transition-old(root),
+  .theme-transition.dark::view-transition-old(root) {
+    animation: scale 1s;
+    animation-fill-mode: both;
+    transform-origin: top left;
+    z-index: -1;
   }
 
-  @keyframes wipe-out {
-    0% { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
-    25% { clip-path: polygon(0 0, 100% 0, 100% 75%, 0 75%); }
-    50% { clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%); }
-    75% { clip-path: polygon(0 0, 100% 0, 100% 25%, 0 25%); }
-    100% { clip-path: polygon(0 0, 100% 0, 100% 0, 0 0); }
-  }
-
-  @keyframes wipe-in {
-    0% { clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%); }
-    25% { clip-path: polygon(0 75%, 100% 75%, 100% 100%, 0 100%); }
-    50% { clip-path: polygon(0 50%, 100% 50%, 100% 100%, 0 100%); }
-    75% { clip-path: polygon(0 25%, 100% 25%, 100% 100%, 0 100%); }
-    100% { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
-  }
-
-  @media (max-width: 768px) {
-    ::view-transition-old(root),
-    ::view-transition-new(root) {
-      animation-duration: 0.3s;
-      animation-timing-function: steps(5, jump-none);
-    }
-
-    ::view-transition-old(root) {
-      animation-name: scanline-out;
-    }
-
-    ::view-transition-new(root) {
-      animation-name: scanline-in;
-    }
-
-    @keyframes scanline-out {
-      0% { clip-path: inset(0 0 0 0); opacity: 1; }
-      20% { clip-path: inset(0 0 0 0); opacity: 0.8; }
-      40% { clip-path: inset(20% 0 20% 0); opacity: 0.6; }
-      60% { clip-path: inset(35% 0 35% 0); opacity: 0.4; }
-      80% { clip-path: inset(45% 0 45% 0); opacity: 0.2; }
-      100% { clip-path: inset(50% 0 50% 0); opacity: 0; }
-    }
-
-    @keyframes scanline-in {
-      0% { clip-path: inset(50% 0 50% 0); opacity: 0; }
-      20% { clip-path: inset(45% 0 45% 0); opacity: 0.2; }
-      40% { clip-path: inset(35% 0 35% 0); opacity: 0.4; }
-      60% { clip-path: inset(20% 0 20% 0); opacity: 0.6; }
-      80% { clip-path: inset(0 0 0 0); opacity: 0.8; }
-      100% { clip-path: inset(0 0 0 0); opacity: 1; }
+  @keyframes scale {
+    to {
+      mask-size: 350vmax;
     }
   }
 }
