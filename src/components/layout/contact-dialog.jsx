@@ -10,14 +10,13 @@ import {
 } from "../ui/dialog";
 import ContactForm from "./contact-form";
 import { Button } from "../ui/button";
-import { useToast } from "../ui/use-toast";
+import { toast } from "sonner";
 import { FaArrowRight } from "react-icons/fa6";
 import { GeistPixelSquare } from "geist/font/pixel";
 
 const ContactDialog = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const { toast } = useToast();
 
   const handleOnSubmit = async (values) => {
     try {
@@ -38,20 +37,15 @@ const ContactDialog = () => {
         throw new Error(data.message || "Something went wrong");
       }
 
-      // Show success toast
-      toast({
-        title: "Message has been sent successfully",
+      toast.success("Message has been sent successfully", {
         description: "Your message has been sent to Discord",
       });
 
       console.log(values);
       setIsOpen(false);
     } catch (error) {
-      // Show error toast
-      toast({
-        title: "Error sending message",
+      toast.error("Error sending message", {
         description: error.message,
-        variant: "destructive",
       });
     } finally {
       setIsSubmitting(false);

@@ -7,7 +7,7 @@ import { IoIosMail } from "react-icons/io";
 import { Button } from "@/components/ui/button";
 import ContactDialog from "@/components/layout/contact-dialog";
 import {  Zen_Dots } from "next/font/google";
-import { toast } from "../ui/use-toast";
+import { toast } from "sonner";
 import GitHubStreak from "../Streaks";
 import { Rss } from "lucide-react";
 import Link from "next/link";
@@ -40,10 +40,8 @@ const Hero = () => {
               className="w-full md:w-48"
               onClick={() => {
                 navigator.clipboard.writeText("npx shivadev");
-                toast({
-                  title: "Copied to clipboard",
+                toast.success("Copied to clipboard", {
                   description: "npx shivadev",
-                  status: "success",
                 });
               }}
             >
