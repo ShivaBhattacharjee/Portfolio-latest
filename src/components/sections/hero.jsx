@@ -52,7 +52,7 @@ const Hero = () => {
             <a href="https://x.com/sh17va" target="_blank">
               <RiTwitterXLine size="24px" className="opacity-60 hover:opacity-100" />
             </a>
-            <a href="https://www.linkedin.com/in/shiva-bhattacharjee/" target="_blank">
+            <a href="https://www.linkedin.com/in/sh1xva/" target="_blank">
               <FaLinkedin size="24px" className="opacity-60 hover:opacity-100" />
             </a>
             <a href="mailto:hello@theshiva.xyz" target="_blank">
