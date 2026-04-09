@@ -157,7 +157,7 @@ const Hero = ({ contributionData = [], lifetimeTotal = 0 }) => {
           <h5 className="mb-4 font-doto text-2xl font-medium md:text-3xl">
             About Me
           </h5>
-          <p className="text-xs md:text-base">
+          <p className="font-space-mono text-xs md:text-base">
             Hi! I&apos;m Shiva Bhattacharjee an Applied AI Engineer. I love
             development, making stuff, and experimenting with whatever catches
             my interest. Most of my work revolves around LLMs, agentic systems,
@@ -208,7 +208,7 @@ const Hero = ({ contributionData = [], lifetimeTotal = 0 }) => {
             {notableAchievements.map(({ title, body, link, linkLabel }) => (
               <li key={title} className="border-l-2 border-muted-foreground/25 pl-4">
                 <span className="text-sm font-semibold text-foreground md:text-base">{title}. </span>
-                <span className="text-sm leading-relaxed text-muted-foreground md:text-base">{body}</span>
+                <span className="font-space-mono text-sm leading-relaxed text-muted-foreground md:text-base">{body}</span>
                 {link && (
                   <Link
                     href={link}

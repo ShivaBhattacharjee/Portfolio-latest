@@ -55,7 +55,7 @@ const ExpandableAbstract = ({ description }) => {
       <h3 className="text-[10px] font-semibold uppercase tracking-wide text-muted-foreground md:text-sm md:normal-case md:tracking-normal md:text-foreground">Abstract</h3>
 
       <div className="hidden md:block">
-        <p className="text-sm leading-relaxed md:text-base">
+        <p className="font-space-mono text-sm leading-relaxed md:text-base">
           {description}
         </p>
       </div>
@@ -63,11 +63,11 @@ const ExpandableAbstract = ({ description }) => {
       <div className="md:hidden">
         <div className="space-y-1.5">
           {isExpanded ? (
-            <p className="text-xs leading-relaxed">
+            <p className="font-space-mono text-xs leading-relaxed">
               {description}
             </p>
           ) : (
-            <p className="text-xs leading-relaxed">
+            <p className="font-space-mono text-xs leading-relaxed">
               {description.slice(0, 120)}...
             </p>
           )}

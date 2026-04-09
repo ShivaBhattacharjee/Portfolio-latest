@@ -75,7 +75,7 @@ const Projects = ({ category, title, description, techstacks, status, link, prev
         </div>
 
         <h1 className="mb-1.5 text-sm font-semibold md:text-base">{title}</h1>
-        <p className="mb-3 text-[11px] leading-relaxed text-muted-foreground md:text-xs">{description}</p>
+        <p className="mb-3 font-space-mono text-[11px] leading-relaxed text-muted-foreground md:text-xs">{description}</p>
 
         <div className="flex flex-wrap gap-1">
           {techstacks.map((tech, index) => (

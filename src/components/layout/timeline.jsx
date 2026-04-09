@@ -50,7 +50,7 @@ const Timeline = ({ role, company, year, type, location, logo, logoPadding, inve
           <p className="mb-1.5 text-[10px] font-semibold uppercase tracking-wide text-muted-foreground md:mb-2 md:text-sm">Key Responsibilities</p>
           <ul className="list-disc space-y-1.5 pl-4 marker:text-muted-foreground/40 md:space-y-2">
             {responsibility.split(/(?<=[.!?])\s+/).filter(Boolean).map((point, i) => (
-              <li key={i} className="text-xs leading-relaxed break-words text-muted-foreground md:text-sm">
+              <li key={i} className="font-space-mono text-xs leading-relaxed break-words text-muted-foreground md:text-sm">
                 {point}
               </li>
             ))}

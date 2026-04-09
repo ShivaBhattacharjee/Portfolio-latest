@@ -20,6 +20,7 @@ const config = {
         inter: ["var(--font-inter)"],
         cera: ["var(--font-cera)"],
         doto: ["'Doto'", "sans-serif"],
+        "space-mono": ["var(--font-space-mono)", "monospace"],
       },
       fontSize: {
         sm: "0.8rem",

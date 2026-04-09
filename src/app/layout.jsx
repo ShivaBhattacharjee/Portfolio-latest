@@ -77,6 +77,14 @@ export const metadata = {
 };
 
 import { GeistPixelSquare } from "geist/font/pixel";
+import { Space_Mono } from "next/font/google";
+
+const spaceMono = Space_Mono({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-space-mono",
+  display: "swap",
+});
 
 export default function RootLayout({ children }) {
   const jsonLd = {
@@ -90,7 +98,7 @@ export default function RootLayout({ children }) {
   };
 
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className={spaceMono.variable}>
       <head>
         <meta name="theme-color" content="#0B0D0E" />
         <meta name="color-scheme" content="dark light" />
