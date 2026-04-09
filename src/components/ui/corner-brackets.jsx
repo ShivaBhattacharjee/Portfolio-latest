@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { forwardRef, useState } from "react"
 import { motion, AnimatePresence } from "motion/react"
 
 const corners = [
@@ -10,14 +10,16 @@ const corners = [
   { position: "-bottom-[3px] -right-[3px]", border: "border-b border-r" },
 ]
 
-export function CornerBrackets({ children, className = "" }) {
+export const CornerBrackets = forwardRef(function CornerBrackets({ children, className = "", ...props }, ref) {
   const [isHovered, setIsHovered] = useState(false)
 
   return (
     <div
+      ref={ref}
       className={`relative ${className}`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      {...props}
     >
       <AnimatePresence>
         {isHovered && (
@@ -45,4 +47,4 @@ export function CornerBrackets({ children, className = "" }) {
       {children}
     </div>
   )
-}
+})
