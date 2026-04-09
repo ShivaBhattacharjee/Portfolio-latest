@@ -1,7 +1,6 @@
-<img width="7980" height="4932" alt="image" src="https://github.com/user-attachments/assets/1da6735c-de71-4a52-901d-536435346d17" />
+<img width="1512" height="982" alt="image" src="https://github.com/user-attachments/assets/b486948f-fc81-497c-be00-d72e5a10f6b6" />
 
-
-## 📦 Installation
+## Installation
 
 ### Prerequisites
 
@@ -33,12 +32,10 @@ yarn install
 Create a `.env.local` file in the root directory and add your environment variables:
 
 ```env
-# Add your environment variables here
-# Example:
-# DISCORD_BOT_TOKEN = 
-# DISCORD_RECIPIENT_ID = 
-// optional //
-# NEXT_PUBLIC_GITHUB_TOKEN = 
+DISCORD_BOT_TOKEN=
+DISCORD_RECIPIENT_ID=
+# optional
+NEXT_PUBLIC_GITHUB_TOKEN=
 ```
 
 ### 4. Run the development server
@@ -56,7 +53,7 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) in your browser to see the result.
 
-## 🏗️ Build for Production
+## Build for Production
 
 ```bash
 # Using Bun
@@ -68,7 +65,7 @@ npm run build
 npm start
 ```
 
-## 📁 Project Structure
+## Project Structure
 
 ```text
 src/
@@ -82,7 +79,7 @@ src/
 └── utils/             # Additional utilities
 ```
 
-## 🎨 Customization
+## Customization
 
 ### 1. Update Personal Information
 
@@ -104,62 +101,50 @@ Update the theme in `src/app/globals.css`:
 
 Components are modular and can be easily added or removed from the main pages.
 
-## ⚠️ Important Warnings
+## Important Warnings
 
-### 🔒 Personal Data
+### Personal Data
 
 - **Remove all personal information** before deploying your own version
 - Update social media links, email addresses, and contact information
 - Replace project links and descriptions with your own
 
-### 📝 Content License
+### Content License
 
 - This template is free to use for personal and commercial projects
-- **Please give credit** by linking back to the original repository
-- Do not redistribute this template as your own creation
 
-### 🔧 Customization Required
+
+### Customization Required
 
 - **Update the contact form** with your own email service configuration
 - **Replace placeholder content** in all sections
 - **Modify or remove** the specific project examples and experiences
 
-### 🚀 Deployment Considerations
+### Deployment Considerations
 
 - Ensure all environment variables are properly configured
 - Test the contact form functionality before going live
 - Optimize images and assets for production
 
-## 📄 Template Usage
+## Template Usage
 
 Feel free to use this template for your own portfolio! Here's what you should do:
 
-1. **Fork or clone** this repository
-2. **Customize the content** with your own information
-3. **Update the styling** to match your personal brand
-4. **Test thoroughly** before deployment
-5. **Give credit** by mentioning this template in your portfolio or README
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
-## 📞 Support
+## Support
 
-If you have any questions or need help customizing this template, feel free to:
+If you have any questions or need help customizing this template, feel free to open an issue on GitHub.
 
-- Open an issue on GitHub
-
-
-## 🎉 Acknowledgments
+## Acknowledgments
 
 - Built with [Next.js](https://nextjs.org/)
 - UI components from [Radix UI](https://radix-ui.com/)
 - Animations powered by [Framer Motion](https://framer.com/motion/)
-- Icons from [React Icons](https://react-icons.github.io/react-icons/)
 
 ---
 
-**⭐ If you found this template helpful, please consider giving it a star!**
-
-Made with ❤️ by [Shiva Bhattacharjee](https://github.com/ShivaBhattacharjee)
+Made by [Shiva Bhattacharjee](https://github.com/ShivaBhattacharjee)
