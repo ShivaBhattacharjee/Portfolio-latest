@@ -204,17 +204,17 @@ const Hero = ({ contributionData = [], lifetimeTotal = 0 }) => {
           <h5 className="mb-4 font-doto text-2xl font-medium md:text-3xl">
             Notable achievements
           </h5>
-          <ul className="space-y-6 text-xs md:text-base">
+          <ul className="space-y-6">
             {notableAchievements.map(({ title, body, link, linkLabel }) => (
               <li key={title} className="border-l-2 border-muted-foreground/25 pl-4">
-                <span className="font-semibold text-foreground">{title}. </span>
-                <span className="text-muted-foreground">{body}</span>
+                <span className="text-sm font-semibold text-foreground md:text-base">{title}. </span>
+                <span className="text-sm leading-relaxed text-muted-foreground md:text-base">{body}</span>
                 {link && (
                   <Link
                     href={link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="ml-1 underline underline-offset-2 text-foreground/70 hover:text-foreground transition-colors"
+                    className="ml-1 text-sm underline underline-offset-2 text-foreground/70 hover:text-foreground transition-colors md:text-base"
                   >
                     {linkLabel}
                   </Link>
