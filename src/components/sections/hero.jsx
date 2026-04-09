@@ -1,10 +1,11 @@
 "use client";
 import React from "react";
-import { FaGithub, FaLinkedin } from "react-icons/fa6";
-import { RiTwitterXLine } from "react-icons/ri";
+import XTwitterIcon from "@/components/icons/x-twitter";
+import GithubIcon from "@/components/icons/github";
+import LinkedinIcon from "@/components/icons/linkedin";
+import DiscordIcon from "@/components/icons/discord";
 import { IoIosMail } from "react-icons/io";
 import { Button } from "@/components/ui/button";
-import ContactDialog from "@/components/layout/contact-dialog";
 import { toast } from "sonner";
 import Link from "next/link";
 import { GeistPixelSquare } from "geist/font/pixel";
@@ -16,19 +17,25 @@ const socialLinks = [
   {
     label: "Twitter",
     href: "https://x.com/sh17va",
-    icon: <RiTwitterXLine size="13px" />,
+    icon: <XTwitterIcon className="h-3.5 w-3.5" />,
     external: true,
   },
   {
     label: "Github",
     href: "https://github.com/shivabhattacharjee",
-    icon: <FaGithub size="13px" />,
+    icon: <GithubIcon className="h-3.5 w-3.5" />,
     external: true,
   },
   {
     label: "LinkedIn",
     href: "https://www.linkedin.com/in/shiva-bhattacharjee/",
-    icon: <FaLinkedin size="13px" />,
+    icon: <LinkedinIcon className="h-3.5 w-3.5" />,
+    external: true,
+  },
+  {
+    label: "Discord",
+    href: "https://discord.com/users/shivabhattacharjee",
+    icon: <DiscordIcon className="h-3.5 w-3.5" />,
     external: true,
   },
   {
@@ -62,7 +69,7 @@ const Hero = ({ contributionData = [], lifetimeTotal = 0 }) => {
       <div className="flex flex-col gap-6">
         <div className={GeistPixelSquare.className}>
           <p className="mb-3 font-doto text-xs text-muted-foreground md:text-sm">
-            Hello I&apos;m 👋
+            Yo I&apos;m 👋
           </p>
 
           <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
@@ -72,17 +79,13 @@ const Hero = ({ contributionData = [], lifetimeTotal = 0 }) => {
           </div>
 
           <p className="mt-2 text-[11px] font-medium uppercase tracking-widest text-muted-foreground md:text-sm">
-            Applied AI Engineer
+            I work on AI, LLMs, and building developer tools on top of them
           </p>
         </div>
 
         <div
-          className={`flex flex-row items-center gap-3 p-1 ${GeistPixelSquare.className}`}
+          className={`flex flex-row items-end gap-4 p-1 ${GeistPixelSquare.className}`}
         >
-          <ContactDialog />
-          <span className="font-doto text-[10px] text-muted-foreground opacity-75 md:text-xs">
-            OR
-          </span>
           <CornerBrackets>
             <Button
               size="sm"
@@ -96,6 +99,21 @@ const Hero = ({ contributionData = [], lifetimeTotal = 0 }) => {
               <ClipboardIcon className="mr-1.5 h-3 w-3" /> npx shivadev
             </Button>
           </CornerBrackets>
+          <div className="relative -ml-1 flex items-center">
+            <svg
+              className="pointer-events-none size-5 shrink-0 rotate-[190deg] text-muted-foreground/40"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 323.057 323.057"
+              xmlSpace="preserve"
+              fill="currentColor"
+            >
+              <path d="M281.442 256.312c-47.124 59.364-139.536 44.676-160.956-29.376-1.224-3.672-1.836-7.956-2.448-11.628 49.572-11.016 97.92-47.124 102.204-90.576 3.672-39.168-36.108-50.796-62.424-28.764-31.212 26.316-53.244 64.872-55.08 105.875-31.824 4.284-63.036-4.284-80.172-35.496-28.764-52.631 9.792-123.624 61.2-144.432 5.508-1.836 3.06-10.404-2.448-8.568C10.326 33.544-26.394 132.688 21.954 191.439c18.972 22.645 49.572 29.988 81.396 26.316 4.284 41.616 36.72 74.664 75.275 87.516 44.676 14.688 85.68-6.731 111.996-41.616 4.285-5.508-4.896-12.239-9.179-7.343M144.354 132.688c9.792-13.464 22.644-28.764 39.168-34.272 15.911-5.508 21.42 16.524 22.031 26.316.612 12.24-7.956 23.256-15.912 31.824-16.523 18.971-44.063 35.496-72.215 42.839 1.836-23.868 13.464-47.123 26.928-66.707" />
+              <path d="M315.713 233.668c-17.136 0-34.884 1.224-51.408 5.508-6.731 1.836-3.672 11.016 3.061 9.792 13.464-2.448 27.54-1.836 41.004-1.224-.612 7.955-1.224 16.523-2.448 24.479-1.224 6.12-5.508 15.3-1.836 21.42 1.836 3.061 4.896 3.061 7.956 1.836 7.344-3.06 7.344-15.912 8.568-22.644 1.836-11.017 2.447-21.42 2.447-32.437 0-3.67-3.672-6.73-7.344-6.73" />
+            </svg>
+            <span className="-rotate-[8deg] ml-2 whitespace-nowrap text-[10px] text-muted-foreground/50 md:text-xs">
+              try this in <br/> your terminal
+            </span>
+          </div>
         </div>
       </div>
 
