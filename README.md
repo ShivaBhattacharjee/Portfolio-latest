@@ -1,4 +1,4 @@
-<img width="1512" height="982" alt="image" src="https://github.com/user-attachments/assets/b486948f-fc81-497c-be00-d72e5a10f6b6" />
+<img width="1440" height="1080" alt="screenshot_1 5x_postspark_2026-04-10_03-11-15" src="https://github.com/user-attachments/assets/04da7cb1-87b3-47f4-b72a-454568df7d52" />
 
 ## Installation
 
