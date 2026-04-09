@@ -66,17 +66,9 @@ const Hero = ({ contributionData = [], lifetimeTotal = 0 }) => {
           </p>
 
           <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-            <h1 className="text-3xl font-bold uppercase tracking-tight md:text-5xl">
-              Shiva
+            <h1 className="text-2xl font-bold uppercase tracking-tight md:text-4xl">
+              Shiva Bhattacharjee
             </h1>
-            <a
-              href="https://x.com/sh17va"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm text-muted-foreground md:text-base"
-            >
-              / @sh17va
-            </a>
           </div>
 
           <p className="mt-2 text-[11px] font-medium uppercase tracking-widest text-muted-foreground md:text-sm">
@@ -116,8 +108,8 @@ const Hero = ({ contributionData = [], lifetimeTotal = 0 }) => {
             Hi! I&apos;m Shiva Bhattacharjee an Applied AI Engineer. I love
             development, making stuff, and experimenting with whatever catches
             my interest. Most of my work revolves around LLMs, agentic systems,
-            and building developer tools on top of them. <br/> I&apos;ve spent time
-            working on complex multi-model pipelines orchestrating parallel
+            and building developer tools on top of them. <br /> I&apos;ve spent
+            time working on complex multi-model pipelines orchestrating parallel
             image generation calls, chaining inference steps with
             memory-augmented context, and wiring up distributed task queues to
             keep everything running at scale. I&apos;ve won 5 hackathons and was
@@ -148,7 +140,10 @@ const Hero = ({ contributionData = [], lifetimeTotal = 0 }) => {
 
         <div className="w-[calc(95vw-2rem)] overflow-x-auto md:w-auto">
           <div className="min-w-[700px]">
-            <GitHubContributionGraph data={contributionData} lifetimeTotal={lifetimeTotal} />
+            <GitHubContributionGraph
+              data={contributionData}
+              lifetimeTotal={lifetimeTotal}
+            />
           </div>
         </div>
       </div>
