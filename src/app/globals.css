@@ -110,31 +110,3 @@ h6 {
     @apply bg-background text-foreground;
   }
 }
-
-@supports (view-transition-name: none) {
-  .theme-transition::view-transition-group(root) {
-    animation-timing-function: var(--expo-out);
-  }
-
-  .theme-transition::view-transition-new(root) {
-    mask: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><defs><filter id="blur"><feGaussianBlur stdDeviation="2"/></filter></defs><circle cx="0" cy="0" r="18" fill="white" filter="url(%23blur)"/></svg>') top left / 0 no-repeat;
-    mask-origin: content-box;
-    animation: scale 1s;
-    animation-fill-mode: both;
-    transform-origin: top left;
-  }
-
-  .theme-transition::view-transition-old(root),
-  .theme-transition.dark::view-transition-old(root) {
-    animation: scale 1s;
-    animation-fill-mode: both;
-    transform-origin: top left;
-    z-index: -1;
-  }
-
-  @keyframes scale {
-    to {
-      mask-size: 350vmax;
-    }
-  }
-}

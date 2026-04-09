@@ -45,16 +45,7 @@ function NavigationBar() {
   };
 
   const toggleMode = () => {
-    if (!document.startViewTransition) {
-      switchTheme();
-      return;
-    }
-    const root = document.documentElement;
-    root.classList.add("theme-transition");
-    const transition = document.startViewTransition(switchTheme);
-    transition.finished.finally(() => {
-      root.classList.remove("theme-transition");
-    });
+    switchTheme();
   };
 
   return (
