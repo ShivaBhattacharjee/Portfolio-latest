@@ -35,6 +35,10 @@ export const notableAchievements = [
     linkLabel: "lending-blockchain on GitHub",
   },
   {
+    title: "In the news",
+    body: "Got featured in a national newspaper for building a fine-tuned LLM on the Assamese language, one of the first of its kind for a low-resource Indian language.",
+  },
+  {
     title: "Side project at scale",
     body: "Built AnimeTrix, an anime streaming site, hit around 1,500 users and was handling 100 concurrent viewers at peak using web scraping and some creative infra decisions. Had to take it down after a DMCA. The repo still has ~190 stars.",
     link: "https://github.com/ShivaBhattacharjee/AnimeTrix-next",
