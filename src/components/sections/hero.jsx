@@ -82,7 +82,7 @@ const Hero = ({ contributionData = [] }) => {
 
         <div className={`flex flex-row items-center gap-3 ${GeistPixelSquare.className}`}>
           <ContactDialog />
-          <span className="text-[10px] opacity-75 text-muted-foreground md:text-xs">OR</span>
+          <span className="text-[10px] opacity-75 text-muted-foreground md:text-xs font-doto">OR</span>
           <CornerBrackets>
             <Button
               size="sm"
