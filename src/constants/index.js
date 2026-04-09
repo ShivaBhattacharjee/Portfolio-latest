@@ -67,7 +67,7 @@ export const experiences = [
     location: "India, On-Site",
     logo: "/Company/Navdyut.png",
     responsibility:
-      "Built an Assamese chatbot on a 22B Mistral model with RAG pipelines for translation and government applications. Scaled the system to 5000+ users and contributed to deployments for public sector use. Project work was featured in regional newspapers.",
+      "Built an Assamese chatbot on a 22B Mistral model with RAG pipelines for translation and government applications. Scaled the system to 500+ users and contributed to deployments for public sector use. Project work was featured in regional newspapers.",
     techstacks: [
       "Mistral",
       "RAG",
