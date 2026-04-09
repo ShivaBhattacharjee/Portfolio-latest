@@ -25,7 +25,7 @@ export const CornerBrackets = forwardRef(function CornerBrackets({ children, cla
         {isHovered && (
           <>
             <motion.span
-              className="pointer-events-none absolute -inset-[3px] border border-dashed border-white/50"
+              className="pointer-events-none absolute -inset-[3px] border border-dashed border-black/50 dark:border-white/50"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -34,7 +34,7 @@ export const CornerBrackets = forwardRef(function CornerBrackets({ children, cla
             {corners.map(({ position, border }) => (
               <motion.span
                 key={position}
-                className={`pointer-events-none absolute ${position} h-[5px] w-[5px] ${border} border-white`}
+                className={`pointer-events-none absolute ${position} h-[5px] w-[5px] ${border} border-black dark:border-white`}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}

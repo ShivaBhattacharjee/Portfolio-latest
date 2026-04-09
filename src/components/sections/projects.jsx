@@ -32,7 +32,7 @@ const Projects = ({ category, title, description, techstacks, status, link, prev
         {isHovered && (
           <>
             <motion.span
-              className="pointer-events-none absolute -inset-[3px] border border-dashed border-white/50"
+              className="pointer-events-none absolute -inset-[3px] border border-dashed border-black/50 dark:border-white/50"
               initial={{ opacity: 0 }}
               animate={flickerKeyframes}
               exit={{ opacity: 0 }}
@@ -41,7 +41,7 @@ const Projects = ({ category, title, description, techstacks, status, link, prev
             {corners.map(({ position, border }) => (
               <motion.span
                 key={position}
-                className={`pointer-events-none absolute ${position} h-[6px] w-[6px] ${border} border-white`}
+                className={`pointer-events-none absolute ${position} h-[6px] w-[6px] ${border} border-black dark:border-white`}
                 initial={{ opacity: 0 }}
                 animate={flickerKeyframes}
                 exit={{ opacity: 0 }}
