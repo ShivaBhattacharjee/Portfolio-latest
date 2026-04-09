@@ -64,8 +64,8 @@ const ContactDialog = () => {
         </DialogTrigger>
         <DialogContent className={`${GeistPixelSquare.className} text-sm border-white/[0.08]`}>
           <DialogHeader>
-            <DialogTitle>Contact Me</DialogTitle>
-            <DialogDescription>
+            <DialogTitle className="font-doto">Contact Me</DialogTitle>
+            <DialogDescription className="font-doto">
               Let&apos;s get in touch by sending me a message.
             </DialogDescription>
           </DialogHeader>

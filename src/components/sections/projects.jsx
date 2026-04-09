@@ -1,26 +1,66 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
+import { motion, AnimatePresence } from "motion/react";
+
+const corners = [
+  { position: "-top-[3px] -left-[3px]", border: "border-t border-l" },
+  { position: "-top-[3px] -right-[3px]", border: "border-t border-r" },
+  { position: "-bottom-[3px] -left-[3px]", border: "border-b border-l" },
+  { position: "-bottom-[3px] -right-[3px]", border: "border-b border-r" },
+]
+
+const flickerKeyframes = {
+  opacity: [0, 1, 0.3, 1, 0.6, 1],
+}
 
 const Projects = ({ category, title, description, techstacks, status, link, preview }) => {
+  const [isHovered, setIsHovered] = useState(false)
+
   return (
     <a
       href={link}
       target="_blank"
       rel="noopener noreferrer"
-      className="block rounded-2xl border border-black/[0.06] bg-black/[0.02] transition-colors hover:bg-black/[0.04] dark:border-white/[0.06] dark:bg-white/[0.03] dark:hover:bg-white/[0.05]"
+      className="relative block border border-black/[0.06] bg-black/[0.02] transition-colors hover:bg-black/[0.04] dark:border-white/[0.06] dark:bg-white/[0.03] dark:hover:bg-white/[0.05]"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
+      <AnimatePresence>
+        {isHovered && (
+          <>
+            <motion.span
+              className="pointer-events-none absolute -inset-[3px] border border-dashed border-white/50"
+              initial={{ opacity: 0 }}
+              animate={flickerKeyframes}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
+            />
+            {corners.map(({ position, border }) => (
+              <motion.span
+                key={position}
+                className={`pointer-events-none absolute ${position} h-[6px] w-[6px] ${border} border-white`}
+                initial={{ opacity: 0 }}
+                animate={flickerKeyframes}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
+              />
+            ))}
+          </>
+        )}
+      </AnimatePresence>
+
       {preview && (
-        <div className="p-2 pb-0">
-          <div className="overflow-hidden rounded-lg border border-black/[0.06] bg-black dark:border-white/[0.06]">
+        <div>
+          <div className="overflow-hidden border-b border-black/[0.06] bg-black dark:border-white/[0.06]">
             <Image
               src={preview}
               alt={`${title} preview`}
               width={400}
               height={250}
-              className="w-full object-cover"
+              className={`w-full object-cover transition-[filter] duration-500 ${isHovered ? "grayscale-0" : "grayscale"}`}
             />
           </div>
         </div>

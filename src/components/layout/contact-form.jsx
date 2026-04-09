@@ -89,7 +89,7 @@ const form = useForm({
               <FormItem className="space-y-2">
                 <FormLabel className="text-sm">Subject</FormLabel>
                 <FormControl>
-                  <Input placeholder="Enter Email Subject" {...field} />
+                  <Input placeholder="Enter Subject" {...field} />
                 </FormControl>
                 <FormMessage className="text-[0.8rem] font-medium" />
               </FormItem>
@@ -103,7 +103,7 @@ const form = useForm({
               <FormItem className="space-y-2">
                 <FormLabel className="text-sm">Body</FormLabel>
                 <FormControl>
-                  <Textarea placeholder="Enter Email Body" {...field} />
+                  <Textarea placeholder="Enter Message" className="resize-none" {...field} />
                 </FormControl>
                 <FormMessage className="text-[0.8rem] font-medium" />
               </FormItem>
