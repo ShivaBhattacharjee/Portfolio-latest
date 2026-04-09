@@ -105,11 +105,11 @@ const Hero = ({ contributionData = [] }) => {
             About Me
           </h5>
           <p className="text-xs md:text-base">
-            Hi! I&apos;m Shiva Bhattacharjee — an Applied AI Engineer. I
+            Hi! I&apos;m Shiva Bhattacharjee  an Applied AI Engineer. I
             love development, making stuff, and experimenting with whatever
             catches my interest. Most of my work revolves around LLMs, agentic
             systems, and building developer tools on top of them. I&apos;ve
-            spent time working on complex multi-model pipelines — orchestrating
+            spent time working on complex multi-model pipelines  orchestrating
             parallel image generation calls, chaining inference steps with
             memory-augmented context, and wiring up distributed task queues to
             keep everything running at scale. I&apos;ve won 5 hackathons and
