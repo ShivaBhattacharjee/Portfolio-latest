@@ -37,7 +37,7 @@ const socialLinks = [
     icon: <IoIosMail size="14px" />,
     external: true,
   },
-]
+];
 
 function SocialButton({ label, href, icon, external }) {
   return (
@@ -53,24 +53,28 @@ function SocialButton({ label, href, icon, external }) {
         </Button>
       </CornerBrackets>
     </Link>
-  )
+  );
 }
 
 const Hero = ({ contributionData = [], lifetimeTotal = 0 }) => {
   return (
     <div className="mx-auto flex flex-col gap-10 md:max-w-4xl">
       <div className="flex flex-col gap-6">
-
         <div className={GeistPixelSquare.className}>
-          <p className="mb-3 text-xs font-doto text-muted-foreground md:text-sm">
-           Hello I&apos;m 👋
+          <p className="mb-3 font-doto text-xs text-muted-foreground md:text-sm">
+            Hello I&apos;m 👋
           </p>
 
           <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
             <h1 className="text-3xl font-bold uppercase tracking-tight md:text-5xl">
               Shiva
             </h1>
-            <a href="https://x.com/sh17va" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground md:text-base">
+            <a
+              href="https://x.com/sh17va"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-muted-foreground md:text-base"
+            >
               / @sh17va
             </a>
           </div>
@@ -80,9 +84,13 @@ const Hero = ({ contributionData = [], lifetimeTotal = 0 }) => {
           </p>
         </div>
 
-        <div className={`flex flex-row items-center gap-3 p-1 ${GeistPixelSquare.className}`}>
+        <div
+          className={`flex flex-row items-center gap-3 p-1 ${GeistPixelSquare.className}`}
+        >
           <ContactDialog />
-          <span className="text-[10px] opacity-75 text-muted-foreground md:text-xs font-doto">OR</span>
+          <span className="font-doto text-[10px] text-muted-foreground opacity-75 md:text-xs">
+            OR
+          </span>
           <CornerBrackets>
             <Button
               size="sm"
@@ -101,36 +109,44 @@ const Hero = ({ contributionData = [], lifetimeTotal = 0 }) => {
 
       <div className="space-y-8">
         <div>
-          <h5 className="mb-4 text-2xl font-medium md:text-3xl font-doto">
+          <h5 className="mb-4 font-doto text-2xl font-medium md:text-3xl">
             About Me
           </h5>
           <p className="text-xs md:text-base">
-            Hi! I&apos;m Shiva Bhattacharjee  an Applied AI Engineer. I
-            love development, making stuff, and experimenting with whatever
-            catches my interest. Most of my work revolves around LLMs, agentic
-            systems, and building developer tools on top of them. I&apos;ve
-            spent time working on complex multi-model pipelines  orchestrating
-            parallel image generation calls, chaining inference steps with
+            Hi! I&apos;m Shiva Bhattacharjee an Applied AI Engineer. I love
+            development, making stuff, and experimenting with whatever catches
+            my interest. Most of my work revolves around LLMs, agentic systems,
+            and building developer tools on top of them. <br/> I&apos;ve spent time
+            working on complex multi-model pipelines orchestrating parallel
+            image generation calls, chaining inference steps with
             memory-augmented context, and wiring up distributed task queues to
-            keep everything running at scale. I&apos;ve won 5 hackathons and
-            was a Smart India Hackathon finalist in my first semester. I enjoy
-            the messy, behind-the-scenes infrastructure work just as much as
+            keep everything running at scale. I&apos;ve won 5 hackathons and was
+            a Smart India Hackathon finalist in my first semester. I enjoy the
+            messy, behind-the-scenes infrastructure work just as much as
             shipping the final product.
           </p>
         </div>
 
         <div>
           <p className="mb-3 text-xs text-muted-foreground md:text-sm">
-            My <span className="font-semibold text-foreground">social links</span> if you wish to connect with me
+            My{" "}
+            <span className="font-semibold text-foreground">social links</span>{" "}
+            if you wish to connect with me
           </p>
           <div className="flex flex-wrap gap-2 p-1">
             {socialLinks.map(({ label, href, icon, external }) => (
-              <SocialButton key={label} label={label} href={href} icon={icon} external={external} />
+              <SocialButton
+                key={label}
+                label={label}
+                href={href}
+                icon={icon}
+                external={external}
+              />
             ))}
           </div>
         </div>
 
-        <div className="w-[calc(100vw-2rem)] overflow-x-auto md:w-auto">
+        <div className="w-[calc(95vw-2rem)] overflow-x-auto md:w-auto">
           <div className="min-w-[700px]">
             <GitHubContributionGraph data={contributionData} lifetimeTotal={lifetimeTotal} />
           </div>

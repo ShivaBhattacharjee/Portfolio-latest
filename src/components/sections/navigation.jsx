@@ -17,6 +17,7 @@ import {
   TabsHighlightItem,
   TabsTrigger,
 } from "@/components/animate-ui/primitives/animate/tabs";
+import { vibrate, playClickSound } from "@/lib/haptics";
 
 const iconMap = {
   "/": HouseIcon,
@@ -36,16 +37,15 @@ function NavigationBar() {
   }, [pathname]);
 
   const handleNavigation = (val) => {
+    vibrate(10);
     setActiveTab(val);
     router.push(val);
   };
 
-  const switchTheme = () => {
-    setTheme(theme === "dark" ? "light" : "dark");
-  };
-
   const toggleMode = () => {
-    switchTheme();
+    vibrate(20);
+    playClickSound();
+    setTheme(theme === "dark" ? "light" : "dark");
   };
 
   return (
