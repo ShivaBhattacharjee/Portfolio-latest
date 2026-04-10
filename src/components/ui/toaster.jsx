@@ -1,14 +1,25 @@
 "use client"
 
+import { useEffect, useState } from "react"
 import { useTheme } from "next-themes"
 import { Toaster as Sonner } from "sonner"
 
 const Toaster = ({ ...props }) => {
   const { theme = "system" } = useTheme()
+  const [position, setPosition] = useState("top-right")
+
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 767px)")
+    const update = (e) => setPosition(e.matches ? "top-center" : "top-right")
+    update(mq)
+    mq.addEventListener("change", update)
+    return () => mq.removeEventListener("change", update)
+  }, [])
 
   return (
     <Sonner
       theme={theme}
+      position={position}
       expand={false}
       richColors={false}
       style={{ fontFamily: "inherit" }}
