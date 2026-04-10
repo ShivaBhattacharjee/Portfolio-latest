@@ -157,19 +157,23 @@ const Hero = ({ contributionData = [], lifetimeTotal = 0 }) => {
           <h5 className="mb-4 font-doto text-2xl font-medium md:text-3xl">
             About Me
           </h5>
-          <p className="font-space-mono text-xs md:text-base">
-            Hi! I&apos;m Shiva Bhattacharjee an Applied AI Engineer. I love
-            development, making stuff, and experimenting with whatever catches
-            my interest. Most of my work revolves around LLMs, agentic systems,
-            and building developer tools on top of them. <br /> I&apos;ve spent
-            time working on complex multi-model pipelines orchestrating parallel
-            image generation calls, chaining inference steps with
-            memory-augmented context, and wiring up distributed task queues to
-            keep everything running at scale. I&apos;ve won 5 hackathons and was
-            a Smart India Hackathon finalist in my first semester. I enjoy the
-            messy, behind-the-scenes infrastructure work just as much as
-            shipping the final product.
-          </p>
+          <div className="font-space-mono text-xs leading-relaxed space-y-3 md:text-base">
+            <p>
+              Hi! I&apos;m Shiva Bhattacharjee an Applied AI Engineer. I love
+              development, making stuff, and experimenting with whatever catches
+              my interest. Most of my work revolves around LLMs, agentic
+              systems, and building developer tools on top of them.
+            </p>
+            <p>
+              I&apos;ve spent time working on complex multi-model pipelines
+              orchestrating parallel image generation calls, chaining inference
+              steps with memory-augmented context, and wiring up distributed
+              task queues to keep everything running at scale. I&apos;ve won 5
+              hackathons and was a Smart India Hackathon finalist in my first
+              semester. I enjoy the messy, behind-the-scenes infrastructure work
+              just as much as shipping the final product.
+            </p>
+          </div>
         </div>
 
         <div>
