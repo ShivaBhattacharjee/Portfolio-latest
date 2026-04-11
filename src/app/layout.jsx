@@ -4,6 +4,7 @@ import NavigationBar from "@/components/sections/navigation";
 import Footer from "@/components/sections/footer";
 
 import OnekoCat from "@/components/OnekoCat";
+import { SmoothScrollProvider } from "@/components/smooth-scroll-provider";
 import { ThemeProvider } from "@/components/theme-provider";
 
 export const metadata = {
@@ -122,6 +123,7 @@ export default function RootLayout({ children }) {
           enableSystem
           disableTransitionOnChange
         >
+          <SmoothScrollProvider>
           <div className="grid min-h-[100dvh] grid-rows-[1fr_auto] overflow-x-hidden">
             <main
               className={`${GeistPixelSquare.className} px-6 pt-14 md:px-0`}
@@ -133,6 +135,7 @@ export default function RootLayout({ children }) {
             <NavigationBar />
             <Toaster />
           </div>
+          </SmoothScrollProvider>
         </ThemeProvider>
       </body>
     </html>
