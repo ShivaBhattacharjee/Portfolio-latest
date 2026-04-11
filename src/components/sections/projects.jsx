@@ -4,6 +4,11 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { motion, AnimatePresence } from "motion/react";
+import { TaptickitIllustration } from "@/components/illustrations/taptickit-illustration";
+
+const projectIllustrations = {
+  taptickit: TaptickitIllustration,
+}
 
 const corners = [
   { position: "-top-[3px] -left-[3px]", border: "border-t border-l" },
@@ -16,15 +21,28 @@ const flickerKeyframes = {
   opacity: [0, 1, 0.3, 1, 0.6, 1],
 }
 
-const Projects = ({ category, title, description, techstacks, status, link, preview }) => {
+const previewSizes = "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+
+const Projects = ({
+  category,
+  title,
+  description,
+  techstacks,
+  status,
+  link,
+  preview,
+  previewDark,
+  illustration,
+}) => {
   const [isHovered, setIsHovered] = useState(false)
+  const Illustration = illustration ? projectIllustrations[illustration] : null
 
   return (
     <a
       href={link}
       target="_blank"
       rel="noopener noreferrer"
-      className="relative block border border-black/[0.06] bg-black/[0.02] transition-colors hover:bg-black/[0.04] dark:border-white/[0.06] dark:bg-white/[0.03] dark:hover:bg-white/[0.05]"
+      className="group relative block min-w-0 border border-black/[0.06] bg-black/[0.02] transition-colors hover:bg-black/[0.04] dark:border-white/[0.06] dark:bg-white/[0.03] dark:hover:bg-white/[0.05]"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -52,16 +70,41 @@ const Projects = ({ category, title, description, techstacks, status, link, prev
         )}
       </AnimatePresence>
 
-      {preview && (
+      {(preview || Illustration) && (
         <div>
-          <div className="overflow-hidden border-b border-black/[0.06] bg-black dark:border-white/[0.06]">
-            <Image
-              src={preview}
-              alt={`${title} preview`}
-              width={400}
-              height={250}
-              className={`w-full object-cover transition-[filter] duration-500 ${isHovered ? "grayscale-0" : "grayscale"}`}
-            />
+          <div
+            className={`border-b border-black/[0.06] dark:border-white/[0.06] ${Illustration ? "overflow-hidden bg-zinc-100 dark:bg-zinc-950" : "relative aspect-[8/5] w-full overflow-hidden bg-white dark:bg-black"}`}
+          >
+            {Illustration ? (
+              <div className={`transition-[filter] duration-500 ${isHovered ? "grayscale-0" : "grayscale"}`}>
+                <Illustration isCardHovered={isHovered} />
+              </div>
+            ) : previewDark ? (
+              <>
+                <Image
+                  src={preview}
+                  alt={`${title} preview`}
+                  fill
+                  sizes={previewSizes}
+                  className={`object-cover transition-[filter] duration-500 dark:hidden ${isHovered ? "grayscale-0" : "grayscale"}`}
+                />
+                <Image
+                  src={previewDark}
+                  alt={`${title} preview`}
+                  fill
+                  sizes={previewSizes}
+                  className={`hidden object-cover transition-[filter] duration-500 dark:block ${isHovered ? "grayscale-0" : "grayscale"}`}
+                />
+              </>
+            ) : (
+              <Image
+                src={preview}
+                alt={`${title} preview`}
+                fill
+                sizes={previewSizes}
+                className={`object-cover transition-[filter] duration-500 ${isHovered ? "grayscale-0" : "grayscale"}`}
+              />
+            )}
           </div>
         </div>
       )}

@@ -135,13 +135,24 @@ export const experiences = [
 
 export const projects = [
   {
+    title: "taptickit",
+    category: "Open Source · npm",
+    description:
+      "Haptic feedback for the mobile web with zero dependencies. React, Vue, Svelte, and vanilla APIs with presets like success, warning, selection, and impact-style taps via the Vibration API.",
+    techstacks: ["TypeScript", "React", "Vue", "Svelte"],
+    status: "active",
+    link: "https://www.npmjs.com/package/taptickit",
+    illustration: "taptickit",
+  },
+  {
     title: "Image Sonification",
     category: "Research Project",
     description: "Converts images to audio and vice versa by mapping pixel colour and position to audio frequencies.",
     techstacks: ["React", "TypeScript"],
     status: "active",
     link: "https://sonification.shiva.codes",
-    preview: "/Sonification.png",
+    preview: "/sonification-light.png",
+    previewDark: "/sonification.png",
   },
 ];
 
