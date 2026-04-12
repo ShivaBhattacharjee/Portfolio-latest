@@ -124,17 +124,17 @@ export default function RootLayout({ children }) {
           disableTransitionOnChange
         >
           <SmoothScrollProvider>
-          <div className="grid min-h-[100dvh] grid-rows-[1fr_auto] overflow-x-hidden">
-            <main
-              className={`${GeistPixelSquare.className} px-6 pt-14 md:px-0`}
-            >
-              <OnekoCat />
-              {children}
-            </main>
-            <Footer />
-            <NavigationBar />
-            <Toaster />
-          </div>
+            <div className="grid min-h-[100dvh] grid-rows-[1fr_auto] overflow-x-hidden">
+              <main
+                className={`${GeistPixelSquare.className} max-w-[1800px] px-6 pt-14 md:mx-auto md:px-0 md:pt-24`}
+              >
+                <OnekoCat />
+                {children}
+              </main>
+              <Footer />
+              <NavigationBar />
+              <Toaster />
+            </div>
           </SmoothScrollProvider>
         </ThemeProvider>
       </body>
