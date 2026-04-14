@@ -33,7 +33,9 @@ export const notableAchievements = [
       { text: "5 hackathons", bold: true, href: "/hackathons" },
       { text: ", mostly building AI stuff. " },
       { text: "WasteEasy", bold: true },
-      { text: " was probably the one I'm proudest of, it rewards people for dumping waste responsibly. Took home " },
+      {
+        text: " was probably the one I'm proudest of, a full waste-management app that uses AI-assisted waste classification, nearby disposal discovery, and a rewards loop where users earn coupons for responsible dumping. Took home ",
+      },
       { text: "Rs. 30,000", bold: true },
       { text: " from ADTU and got called out as a unique tech startup at an " },
       { text: "IIM Shillong", bold: true },
@@ -51,7 +53,9 @@ export const notableAchievements = [
       { text: "Ethereum", bold: true },
       { text: " and build an actual " },
       { text: "credit score on-chain", bold: true },
-      { text: ". No banks, just smart contracts." },
+      {
+        text: ". Built flows for issuing loans, tracking active borrows, repayments, and defaulter marking with transparent contract-backed state. No banks, just smart contracts.",
+      },
     ],
     link: "https://github.com/ShivaBhattacharjee/lending-blockchain",
     linkLabel: "lending-blockchain on GitHub",
@@ -208,12 +212,12 @@ export const projects = [
 export const hackathons = [
   {
     title: "WasteEasy",
-    event: "Envision Hackathon a",
+    event: "Envision Hackathon",
     year: "2023",
     placement: "1st Place",
     college: "Assam Down Town University",
     description:
-      "An app that rewards people for disposing waste responsibly. Recognised as a unique tech startup at an IIM Shillong entrepreneurship event.",
+      "Built WasteEasy, a waste-management platform focused on correct segregation and easier disposal. Added AI-powered waste classification, location-aware discovery of nearby disposal points via maps, and a coupon-based incentive loop to reward responsible dumping behavior. The project won 1st place at Envision Hackathon and was later recognised as a unique tech startup at an IIM Shillong entrepreneurship event.",
     techstacks: ["React Native", "Node.js", "MongoDB", "Google Maps API"],
     link: "https://github.com/ShivaBhattacharjee/WasteEasy",
   },
@@ -274,7 +278,7 @@ export const hackathons = [
     placement: "Bounty Winner",
     college: "Assam Royal Global University",
     description:
-      "A decentralised lending protocol that lets people lend money on Ethereum and build an actual credit score on-chain — no banks, just smart contracts.",
+      "Built a decentralised loan management app on Ethereum where users can issue loans, receive loans, repay dues, and flag defaults, all with transparent on-chain records. The protocol was designed around trust-minimised lending and on-chain credit history creation without traditional intermediaries, which earned a Rise In bounty.",
     techstacks: ["Solidity", "Ethereum", "React", "Hardhat", "Web3.js"],
     link: "https://github.com/ShivaBhattacharjee/lending-blockchain",
   },
