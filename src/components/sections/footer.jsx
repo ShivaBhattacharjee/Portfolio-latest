@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import LocationIcon from "@/components/icons/location";
 import BoltIcon from "@/components/icons/bolt";
 import CloudSunIcon from "@/components/icons/cloud-sun";
+import SeikoWatchModal from "@/components/watch-modal";
 
 const Footer = () => {
   const [time, setTime] = useState(null);
@@ -67,9 +68,15 @@ const Footer = () => {
       <div className="flex flex-col gap-2">
         <div className="flex flex-col gap-1 font-cera text-xs text-muted-foreground/60">
           {time && (
-            <span>
-              {formattedDate} &middot; {formattedTime}
-            </span>
+            <SeikoWatchModal>
+              <button
+                type="button"
+                className="w-fit cursor-pointer text-left transition-colors hover:text-foreground focus:outline-none focus-visible:text-foreground"
+                aria-label="Open Seiko analog watch"
+              >
+                {formattedDate} &middot; {formattedTime}
+              </button>
+            </SeikoWatchModal>
           )}
           {location && (
             <span className="flex items-center gap-1">
