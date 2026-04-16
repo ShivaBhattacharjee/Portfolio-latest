@@ -178,6 +178,7 @@ export default function OnekoCat() {
   return (
     <div
       ref={nekoRef}
+      data-oneko-cat="true"
       aria-hidden="true"
       style={{
         width: '32px',

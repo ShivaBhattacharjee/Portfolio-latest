@@ -23,6 +23,17 @@ export default function SeikoWatchModal({ children }) {
     return () => clearInterval(id);
   }, []);
 
+  useEffect(() => {
+    const onekoCatElement = document.querySelector('[data-oneko-cat="true"]');
+    if (!(onekoCatElement instanceof HTMLElement)) return;
+
+    onekoCatElement.style.opacity = open ? "0" : "1";
+
+    return () => {
+      onekoCatElement.style.opacity = "1";
+    };
+  }, [open]);
+
   const timeLabel = time
     ? time.toLocaleTimeString("en-US", {
         hour: "2-digit",
