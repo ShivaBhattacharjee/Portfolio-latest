@@ -167,18 +167,10 @@ const Hero = ({ contributionData = [], lifetimeTotal = 0 }) => {
           <h5 className="mb-4 font-doto text-2xl font-medium md:text-3xl">
             About Me
           </h5>
-          <p className="text-xs font-space-mono md:text-base md:leading-relaxed">
-            Hi! I&apos;m Shiva Bhattacharjee an Applied AI Engineer. I love
-            development, making stuff, and experimenting with whatever catches
-            my interest. Most of my work revolves around LLMs, agentic systems,
-            and building developer tools on top of them. <br/> I&apos;ve spent
-            time working on complex multi-model pipelines orchestrating parallel
-            image generation calls, chaining inference steps with
-            memory-augmented context, and wiring up distributed task queues to
-            keep everything running at scale. I&apos;ve won 5 hackathons and was
-            a Smart India Hackathon finalist in my first semester. I enjoy the
-            messy, behind-the-scenes infrastructure work just as much as
-            shipping the final product.
+          <p className="text-xs font-space-mono md:text-base md:leading-relaxed text-muted-foreground">
+            Hi! I&apos;m Shiva Bhattacharjee an <strong className="font-semibold text-foreground">Applied AI Engineer</strong>. Most of my work revolves around <strong className="font-semibold text-foreground">LLMs, agentic systems</strong>, and building developer tools on top of them.{" "}
+            I&apos;ve shipped production systems with <strong className="font-semibold text-foreground">RAG pipelines</strong>, <strong className="font-semibold text-foreground">vector databases</strong>, and <strong className="font-semibold text-foreground">multimodal search</strong>  converting text and images into <strong className="font-semibold text-foreground">embeddings</strong> and ranking results via <strong className="font-semibold text-foreground">cosine similarity</strong>.<br/>
+            I&apos;ve also worked on <strong className="font-semibold text-foreground">multi-model pipelines</strong> with <strong className="font-semibold text-foreground">memory-augmented context</strong>, <strong className="font-semibold text-foreground">distributed task queues</strong>, and fine-tuning <strong className="font-semibold text-foreground">LLMs on low-resource languages</strong>. I&apos;ve won <strong className="font-semibold text-foreground">5 hackathons</strong> and was a <strong className="font-semibold text-foreground">Smart India Hackathon finalist</strong> in my first semester. I enjoy the messy infrastructure work just as much as shipping the final product.
           </p>
         </motion.div>
 

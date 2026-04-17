@@ -23,7 +23,7 @@ const accentLine = {
   "Qualifier":     "bg-sky-500 dark:bg-sky-400",
 };
 
-const HackathonEntry = ({ title, event, year, placement, college, description, techstacks, link, index }) => {
+const HackathonEntry = ({ title, event, year, placement, college, body, techstacks, link, index }) => {
   const [hovered, setHovered] = useState(false);
   const color = accentColor[placement] ?? "text-foreground";
   const line = accentLine[placement] ?? "bg-foreground/20";
@@ -54,7 +54,15 @@ const HackathonEntry = ({ title, event, year, placement, college, description, t
 
       {/* Description */}
       <p className="mt-2 font-space-mono text-xs leading-relaxed text-muted-foreground md:text-sm">
-        {description}
+        {Array.isArray(body)
+          ? body.map((seg, i) =>
+              seg.bold ? (
+                <strong key={i} className="font-semibold text-foreground">{seg.text}</strong>
+              ) : (
+                <span key={i}>{seg.text}</span>
+              )
+            )
+          : body}
       </p>
 
       {/* Tech — inline, editorial style */}

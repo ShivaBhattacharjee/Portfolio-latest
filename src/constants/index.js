@@ -106,8 +106,13 @@ export const experiences = [
     type: "Internship",
     location: "Guwahati, On-Site",
     logo: "/Company/gitcs.png",
-    responsibility:
-      "Develop websites and systems to be used by its clients and maintain current existing websites and systems.",
+    responsibility: [
+      [
+        { text: "Developed " },
+        { text: "websites and systems", bold: true },
+        { text: " for clients and maintained existing platforms." },
+      ],
+    ],
     techstacks: ["ReactJS", "NextJS", "Frame Motion", "ThreeJS"],
   },
   {
@@ -117,8 +122,25 @@ export const experiences = [
     type: "Full-Time",
     location: "Hyderabad, Hybrid",
     logo: "/Company/ttipl.png",
-    responsibility:
-      "Built internal ERP modules for billing, vendor, and project tracking used by construction operations. Developed semantic project document search using RAG pipelines with OpenAI embeddings and vector databases for construction drawings, BOQs, and reports. Optimized API performance and database queries improving internal tool response times and reliability.",
+    responsibility: [
+      [
+        { text: "Built " },
+        { text: "internal ERP modules", bold: true },
+        { text: " for billing, vendor, and project tracking used by construction operations." },
+      ],
+      [
+        { text: "Developed " },
+        { text: "semantic project document search", bold: true },
+        { text: " using " },
+        { text: "RAG pipelines with OpenAI embeddings and vector databases", bold: true },
+        { text: " for construction drawings, BOQs, and reports." },
+      ],
+      [
+        { text: "Optimized " },
+        { text: "API performance and database queries", bold: true },
+        { text: " improving internal tool response times and reliability." },
+      ],
+    ],
     techstacks: [
       "ReactJS",
       "NextJS",
@@ -137,8 +159,27 @@ export const experiences = [
     type: "Full-Time",
     location: "Guwahati, On-Site",
     logo: "/Company/Navdyut.png",
-    responsibility:
-      "Built an Assamese chatbot on a 22B Mistral model with RAG pipelines for translation and government applications. Scaled the system to 500+ users and contributed to deployments for public sector use. Project work was featured in regional newspapers.",
+    responsibility: [
+      [
+        { text: "Built an " },
+        { text: "Assamese chatbot", bold: true },
+        { text: " on a " },
+        { text: "22B Mistral model", bold: true },
+        { text: " with RAG pipelines for translation and government applications." },
+      ],
+      [
+        { text: "Scaled the system to " },
+        { text: "500+ users", bold: true },
+        { text: " and contributed to deployments for " },
+        { text: "public sector", bold: true },
+        { text: " use." },
+      ],
+      [
+        { text: "Project work was featured in " },
+        { text: "regional newspapers", bold: true },
+        { text: "." },
+      ],
+    ],
     techstacks: [
       "Mistral",
       "RAG",
@@ -159,8 +200,62 @@ export const experiences = [
     logo: "/Company/Astra.png",
     logoPadding: false,
     invertLogo: true,
-    responsibility:
-      "Reduced jewelry design turnaround from days to minutes by building AI agent workflows using the Vercel AI SDK with observability via Langfuse. Built an interactive jewelry design canvas using React + XYFlow enabling credit-gated editing and real-time agent-driven design iteration. Developed a Redis queue pipeline generating 70+ jewelry design variations in 5 minutes per batch. Built a custom memory system with rolling context per user to retain design preferences and reduce duplicate generations. Improved reliability and performance across microservices deployed with Docker, Firebase, and GCP.",
+    responsibility: [
+      [
+        { text: "Reduced jewelry design turnaround from days to minutes by building AI agent workflows using " },
+        { text: "Vercel AI SDK", bold: true },
+        { text: " with observability via " },
+        { text: "Langfuse", bold: true },
+        { text: "." },
+      ],
+      [
+        { text: "Built an interactive jewelry design canvas using " },
+        { text: "React + XYFlow", bold: true },
+        { text: " enabling credit-gated editing and real-time agent-driven design iteration." },
+      ],
+      [
+        { text: "Developed a " },
+        { text: "Redis", bold: true },
+        { text: " queue pipeline generating " },
+        { text: "70+ product images", bold: true },
+        { text: " per client batch in " },
+        { text: "under 5 minutes", bold: true },
+        { text: "." },
+      ],
+      [
+        { text: "Built a " },
+        { text: "multimodal inventory search", bold: true },
+        { text: " users query by reference image or text description, both converted to " },
+        { text: "vector embeddings", bold: true },
+        { text: " and ranked against a " },
+        { text: "Milvus", bold: true },
+        { text: " vector DB via " },
+        { text: "cosine similarity", bold: true },
+        { text: ". Added " },
+        { text: "AI image tagging", bold: true },
+        { text: " to enrich product vectors and improve retrieval accuracy. Cut catalog search to " },
+        { text: "sub-1.5s", bold: true },
+        { text: " across " },
+        { text: "25,000+ images", bold: true },
+        { text: " using " },
+        { text: "gemini-embedding-2-preview", bold: true },
+        { text: " and a " },
+        { text: "semantic reranker", bold: true },
+        { text: "." },
+      ],
+      [
+        { text: "Built a custom memory system with rolling context per user to retain design preferences and reduce duplicate generations." },
+      ],
+      [
+        { text: "Improved reliability and performance across microservices deployed with " },
+        { text: "Docker", bold: true },
+        { text: ", " },
+        { text: "Firebase", bold: true },
+        { text: ", and " },
+        { text: "GCP", bold: true },
+        { text: "." },
+      ],
+    ],
     techstacks: [
       "Vercel AI SDK",
       "React",
@@ -216,8 +311,21 @@ export const hackathons = [
     year: "2023",
     placement: "1st Place",
     college: "Assam Down Town University",
-    description:
-      "Built WasteEasy, a waste-management platform focused on correct segregation and easier disposal. Added AI-powered waste classification, location-aware discovery of nearby disposal points via maps, and a coupon-based incentive loop to reward responsible dumping behavior. The project won 1st place at Envision Hackathon and was later recognised as a unique tech startup at an IIM Shillong entrepreneurship event.",
+    body: [
+      { text: "Built WasteEasy, a " },
+      { text: "waste-management platform", bold: true },
+      { text: " focused on correct segregation and easier disposal. Added " },
+      { text: "AI-powered waste classification", bold: true },
+      { text: ", " },
+      { text: "location-aware discovery", bold: true },
+      { text: " of nearby disposal points via maps, and a " },
+      { text: "coupon-based incentive loop", bold: true },
+      { text: " to reward responsible dumping behavior. The project won " },
+      { text: "1st place at Envision Hackathon", bold: true },
+      { text: " and was later recognised as a unique tech startup at an " },
+      { text: "IIM Shillong", bold: true },
+      { text: " entrepreneurship event." },
+    ],
     techstacks: ["React Native", "Node.js", "MongoDB", "Google Maps API"],
     link: "https://github.com/ShivaBhattacharjee/WasteEasy",
   },
@@ -227,8 +335,19 @@ export const hackathons = [
     year: "2023",
     placement: "1st Place",
     college: "Assam Royal Global University",
-    description:
-      "Built a Google Maps-style smart parking platform for Guwahati where users can discover nearby parking spots, calculate the shortest route to available locations, and make faster parking decisions in busy areas. Added community-driven features like ratings, written reviews, on-ground image uploads, and complaint reporting to flag incorrect info or local issues. The crowdsourced data model kept listings fresh and practical, helping the project win 1st prize at Technophilia.",
+    body: [
+      { text: "Built a " },
+      { text: "Google Maps-style smart parking platform", bold: true },
+      { text: " for Guwahati where users can discover nearby parking spots, calculate the " },
+      { text: "shortest route", bold: true },
+      { text: " to available locations, and make faster parking decisions in busy areas. Added " },
+      { text: "community-driven features", bold: true },
+      { text: " like ratings, written reviews, on-ground image uploads, and complaint reporting to flag incorrect info or local issues. The " },
+      { text: "crowdsourced data model", bold: true },
+      { text: " kept listings fresh and practical, helping the project win " },
+      { text: "1st prize at Technophilia", bold: true },
+      { text: "." },
+    ],
     techstacks: ["React", "Node.js", "MongoDB", "Google Maps API"],
   },
   {
@@ -237,8 +356,15 @@ export const hackathons = [
     year: "2024",
     placement: "2nd Place",
     college: "Girijananda Chowdhury University",
-    description:
-      "Built a medical attendance system in a 20-hour sprint to digitize attendance for healthcare staff and trainees. Implemented rapid check-in flows, role-based records, and basic reporting to reduce manual entry and improve shift-level visibility. The speed of execution and practical utility secured 2nd prize at Hack GCU.",
+    body: [
+      { text: "Built a medical attendance system in a " },
+      { text: "20-hour sprint", bold: true },
+      { text: " to digitize attendance for healthcare staff and trainees. Implemented " },
+      { text: "rapid check-in flows", bold: true },
+      { text: ", role-based records, and basic reporting to reduce manual entry and improve shift-level visibility. The speed of execution and practical utility secured " },
+      { text: "2nd prize at Hack GCU", bold: true },
+      { text: "." },
+    ],
     techstacks: ["React", "Node.js", "Express", "MongoDB"],
   },
   {
@@ -247,8 +373,15 @@ export const hackathons = [
     year: "2024",
     placement: "2nd Place",
     college: "Assam Engineering College",
-    description:
-      "Secured 2nd position at Code War 5.0 by building a campus safety app that enabled incident reporting, location-aware alerts, and faster coordination during emergencies. Built with Next.js 14, Google Maps API, serverless functions, and Socket.IO for real-time updates and communication.",
+    body: [
+      { text: "Secured " },
+      { text: "2nd position at Code War 5.0", bold: true },
+      { text: " by building a campus safety app that enabled " },
+      { text: "incident reporting, location-aware alerts", bold: true },
+      { text: ", and faster coordination during emergencies. Built with " },
+      { text: "Next.js 14, Google Maps API, serverless functions, and Socket.IO", bold: true },
+      { text: " for real-time updates and communication." },
+    ],
     techstacks: ["Next.js 14", "Google Maps API", "Serverless Functions", "Socket.IO"],
   },
   {
@@ -257,8 +390,15 @@ export const hackathons = [
     year: "2025",
     placement: "3rd Place",
     college: "Assam Down Town University",
-    description:
-      "Won 3rd position by building a live space intelligence dashboard that combined Mars weather updates, an ISS live tracker, near-Earth asteroid monitoring, and NASA's Astronomy Picture of the Day in one terminal-style interface. Built with Next.js, Three.js, and NASA Open APIs with real-time data refresh and interactive visual rendering.",
+    body: [
+      { text: "Won " },
+      { text: "3rd position", bold: true },
+      { text: " by building a live space intelligence dashboard that combined " },
+      { text: "Mars weather updates, ISS live tracker, near-Earth asteroid monitoring", bold: true },
+      { text: ", and NASA's Astronomy Picture of the Day in one terminal-style interface. Built with " },
+      { text: "Next.js, Three.js, and NASA Open APIs", bold: true },
+      { text: " with real-time data refresh and interactive visual rendering." },
+    ],
     techstacks: ["Next.js", "Three.js", "NASA Open APIs"],
   },
   {
@@ -267,8 +407,15 @@ export const hackathons = [
     year: "2023",
     placement: "Qualifier",
     college: " Visvesvaraya Technological University ",
-    description:
-      "Qualified for SIH 2023 in my very first semester of college. Figured it out on the fly and made it through the national rounds.",
+    body: [
+      { text: "Qualified for " },
+      { text: "SIH 2023", bold: true },
+      { text: " in my " },
+      { text: "very first semester", bold: true },
+      { text: " of college. Figured it out on the fly and made it through the " },
+      { text: "national rounds", bold: true },
+      { text: "." },
+    ],
     techstacks: ["React", "Node.js", "Express", "MongoDB"],
   },
   {
@@ -277,8 +424,19 @@ export const hackathons = [
     year: "2023",
     placement: "Bounty Winner",
     college: "Assam Royal Global University",
-    description:
-      "Built a decentralised loan management app on Ethereum where users can issue loans, receive loans, repay dues, and flag defaults, all with transparent on-chain records. The protocol was designed around trust-minimised lending and on-chain credit history creation without traditional intermediaries, which earned a Rise In bounty.",
+    body: [
+      { text: "Built a " },
+      { text: "decentralised loan management app on Ethereum", bold: true },
+      { text: " where users can issue loans, receive loans, repay dues, and flag defaults, all with " },
+      { text: "transparent on-chain records", bold: true },
+      { text: ". The protocol was designed around " },
+      { text: "trust-minimised lending", bold: true },
+      { text: " and " },
+      { text: "on-chain credit history creation", bold: true },
+      { text: " without traditional intermediaries, which earned a " },
+      { text: "Rise In bounty", bold: true },
+      { text: "." },
+    ],
     techstacks: ["Solidity", "Ethereum", "React", "Hardhat", "Web3.js"],
     link: "https://github.com/ShivaBhattacharjee/lending-blockchain",
   },
