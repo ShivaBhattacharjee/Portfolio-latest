@@ -111,7 +111,7 @@ const Hero = ({ contributionData = [], lifetimeTotal = 0 }) => {
       <motion.div className="flex flex-col gap-6" {...fadeUp(0)}>
         <div className={GeistPixelSquare.className}>
           <p className="mb-3 font-doto text-xs text-muted-foreground md:text-sm">
-            Hello World I&apos;m <WaveEmoji />
+            Hola I&apos;m <WaveEmoji />
           </p>
 
           <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
