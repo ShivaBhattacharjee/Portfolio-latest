@@ -54,7 +54,7 @@ export default function SeikoWatchModal({ children }) {
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>{children}</DialogTrigger>
       <DialogContent className="!left-0 !top-0 flex h-screen !max-w-none !translate-x-0 !translate-y-0 flex-col items-center justify-center gap-6 rounded-none border-none bg-background p-6 shadow-none data-[state=closed]:duration-300 data-[state=open]:duration-500 sm:w-screen">
-        <DialogTitle className="sr-only">Seiko watch view</DialogTitle>
+        <DialogTitle className="sr-only">Watch view</DialogTitle>
         <DialogDescription className="sr-only">
           Shows the current local date, time, and timezone.
         </DialogDescription>

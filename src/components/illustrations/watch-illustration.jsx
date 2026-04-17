@@ -123,7 +123,7 @@ export function SeikoWatchIllustration() {
           cx="200"
           cy="200"
           r="3"
-          className="fill-zinc-100"
+          className="dark:fill-zinc-100 fill-zinc-700"
         />
       </svg>
     </div>
