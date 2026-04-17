@@ -2,7 +2,7 @@ import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import NavigationBar from "@/components/sections/navigation";
 import Footer from "@/components/sections/footer";
-
+import NextTopLoader from "nextjs-toploader";
 import OnekoCat from "@/components/OnekoCat";
 import { SmoothScrollProvider } from "@/components/smooth-scroll-provider";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -130,6 +130,12 @@ export default function RootLayout({ children }) {
           enableSystem
           disableTransitionOnChange
         >
+          <NextTopLoader
+            color="hsl(var(--foreground))"
+            shadow="0 0 10px hsl(var(--foreground))"
+            height={2}
+            showSpinner={false}
+          />
           <SmoothScrollProvider>
             <div className="grid min-h-[100dvh] grid-rows-[1fr_auto] overflow-x-hidden">
               <main
