@@ -27,7 +27,7 @@ import {
   SiNasa,
   SiVite,
 } from "react-icons/si";
-import { Database, Sparkles, Brain, Boxes, Network, Activity, Code2, Flame, Cpu, Eye, Cloud, Link2, Rocket } from "lucide-react";
+import { Database, Sparkles, Brain, Boxes, Network, Activity, Code2, Flame, Cpu, Eye, Cloud, Link2, Rocket, Volume2 } from "lucide-react";
 
 // adaptive => use currentColor (good for monochrome brands so they stay visible in dark/light)
 const TECH_META = {
@@ -83,6 +83,7 @@ const TECH_META = {
   "Serverless Functions": { Icon: Cloud, color: "#F59E0B" },
   Hardhat: { Icon: Flame, color: "#F0B90B" },
   "Web3.js": { Icon: Link2, color: "#F16822" },
+  "Web Audio API": { Icon: Volume2, color: "#8B5CF6" },
 };
 
 const DEFAULT = { Icon: Code2, adaptive: true };
@@ -101,7 +102,7 @@ export const TechBadge = ({ name }) => {
 
   if (adaptive) {
     return (
-      <span className="inline-flex items-center gap-1.5 rounded-md border border-black/[0.08] bg-black/[0.04] px-2 py-0.5 text-[10px] text-foreground/80 dark:border-white/[0.1] dark:bg-white/[0.06] md:px-2.5 md:py-1 md:text-[11px]">
+      <span className="inline-flex items-center gap-1.5 rounded-md border border-dashed border-black/[0.15] bg-black/[0.04] px-2 py-0.5 text-[10px] text-foreground/80 dark:border-white/[0.18] dark:bg-white/[0.06] md:px-2.5 md:py-1 md:text-[11px]">
         <Icon className="h-3 w-3 md:h-3.5 md:w-3.5" />
         {name}
       </span>
@@ -110,10 +111,10 @@ export const TechBadge = ({ name }) => {
 
   return (
     <span
-      className="inline-flex items-center gap-1.5 rounded-md border px-2 py-0.5 text-[10px] font-medium md:px-2.5 md:py-1 md:text-[11px]"
+      className="inline-flex items-center gap-1.5 rounded-md border border-dashed px-2 py-0.5 text-[10px] font-medium md:px-2.5 md:py-1 md:text-[11px]"
       style={{
         backgroundColor: hexToRgba(color, 0.12),
-        borderColor: hexToRgba(color, 0.3),
+        borderColor: hexToRgba(color, 0.35),
         color,
       }}
     >

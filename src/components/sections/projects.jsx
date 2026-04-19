@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
+import { TechBadge } from "@/lib/tech-icons";
 import { motion, AnimatePresence } from "motion/react";
 import { TaptickitIllustration } from "@/components/illustrations/taptickit-illustration";
 
@@ -126,12 +127,7 @@ const Projects = ({
 
         <div className="flex flex-wrap gap-1">
           {techstacks.map((tech, index) => (
-            <span
-              key={index}
-              className="rounded-full bg-black/[0.04] px-2 py-0.5 text-[10px] text-muted-foreground dark:bg-white/[0.06] md:px-2.5 md:text-[11px]"
-            >
-              {tech}
-            </span>
+            <TechBadge key={index} name={tech} />
           ))}
         </div>
       </div>

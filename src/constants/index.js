@@ -322,9 +322,9 @@ export const projects = [
   },
   {
     title: "Image Sonification",
-    category: "Research Project",
-    description: "Converts images to audio and vice versa by mapping pixel colour and position to audio frequencies.",
-    techstacks: ["React", "TypeScript"],
+    category: "Research Project · Web App",
+    description: "Converts images to audio and vice versa by mapping pixel colour and position to audio frequencies. Supports real-time playback, frequency mapping controls, and reverse synthesis to reconstruct images from generated audio files.",
+    techstacks: ["React", "TypeScript", "Web Audio API", "Vite"],
     status: "active",
     link: "https://sonification.shiva.codes",
     preview: "/sonification-light.png",

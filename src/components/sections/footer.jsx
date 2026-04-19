@@ -5,12 +5,14 @@ import LocationIcon from "@/components/icons/location";
 import BoltIcon from "@/components/icons/bolt";
 import CloudSunIcon from "@/components/icons/cloud-sun";
 import SeikoWatchModal from "@/components/watch-modal";
+import IconTelescopeTripod from "@/components/icons/telescope-tripod";
 
 const Footer = () => {
   const [time, setTime] = useState(null);
   const [battery, setBattery] = useState(null);
   const [location, setLocation] = useState(null);
   const [weather, setWeather] = useState(null);
+  const [visitors, setVisitors] = useState(null);
   useEffect(() => {
     const tick = () => setTime(new Date());
     tick();
@@ -26,6 +28,15 @@ const Footer = () => {
         batt.addEventListener("levelchange", update);
       });
     }
+  }, []);
+
+  useEffect(() => {
+    fetch("/api/visitors")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.count !== null) setVisitors(data.count.toLocaleString());
+      })
+      .catch(() => {});
   }, []);
 
   useEffect(() => {
@@ -91,10 +102,20 @@ const Footer = () => {
               )}
             </span>
           )}
-          {battery !== null && (
-            <span className="flex items-center gap-1">
-              <BoltIcon className="h-3 w-3" />
-              {battery}%
+          {(battery !== null || visitors !== null) && (
+            <span className="flex items-center gap-3">
+              {battery !== null && (
+                <span className="flex items-center gap-1">
+                  <BoltIcon className="h-3 w-3" />
+                  {battery}%
+                </span>
+              )}
+              {visitors !== null && (
+                <span className="flex items-center gap-1">
+                  <IconTelescopeTripod className="h-3 w-3" />
+                  {visitors} visitors
+                </span>
+              )}
             </span>
           )}
         </div>
