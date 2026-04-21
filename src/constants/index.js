@@ -23,7 +23,9 @@ export const notableAchievements = [
     body: [
       { text: "Made it to " },
       { text: "SIH 2023", bold: true },
-      { text: " in my very first semester of college. Didn't really know what I was doing but figured it out." },
+      {
+        text: " in my very first semester of college. Didn't really know what I was doing but figured it out.",
+      },
     ],
   },
   {
@@ -67,7 +69,9 @@ export const notableAchievements = [
       { text: "national newspaper", bold: true },
       { text: " for building a " },
       { text: "fine-tuned LLM on the Assamese language", bold: true },
-      { text: ", one of the first of its kind for a low-resource Indian language." },
+      {
+        text: ", one of the first of its kind for a low-resource Indian language.",
+      },
     ],
   },
   {
@@ -79,7 +83,9 @@ export const notableAchievements = [
       { text: "15,000 users", bold: true },
       { text: " and was handling " },
       { text: "100 concurrent viewers", bold: true },
-      { text: " at peak using web scraping and some creative infra decisions. Had to take it down after a DMCA. The repo still has " },
+      {
+        text: " at peak using web scraping and some creative infra decisions. Had to take it down after a DMCA. The repo still has ",
+      },
       { text: "~190 stars", bold: true },
       { text: "." },
     ],
@@ -126,13 +132,18 @@ export const experiences = [
       [
         { text: "Built " },
         { text: "internal ERP modules", bold: true },
-        { text: " for billing, vendor, and project tracking used by construction operations." },
+        {
+          text: " for billing, vendor, and project tracking used by construction operations.",
+        },
       ],
       [
         { text: "Developed " },
         { text: "semantic project document search", bold: true },
         { text: " using " },
-        { text: "RAG pipelines with OpenAI embeddings and vector databases", bold: true },
+        {
+          text: "RAG pipelines with OpenAI embeddings and vector databases",
+          bold: true,
+        },
         { text: " for construction drawings, BOQs, and reports." },
       ],
       [
@@ -162,7 +173,10 @@ export const experiences = [
     responsibility: [
       [
         { text: "Got deep into " },
-        { text: "fine-tuning LLMs on low-resource Indian languages", bold: true },
+        {
+          text: "fine-tuning LLMs on low-resource Indian languages",
+          bold: true,
+        },
         { text: " using " },
         { text: "Unsloth", bold: true },
         { text: ", " },
@@ -215,7 +229,9 @@ export const experiences = [
     invertLogo: true,
     responsibility: [
       [
-        { text: "Reduced jewelry design turnaround from days to minutes by building AI agent workflows using " },
+        {
+          text: "Reduced jewelry design turnaround from days to minutes by building AI agent workflows using ",
+        },
         { text: "Vercel AI SDK", bold: true },
         { text: " with observability via " },
         { text: "Langfuse", bold: true },
@@ -224,7 +240,9 @@ export const experiences = [
       [
         { text: "Built an interactive jewelry design canvas using " },
         { text: "React + XYFlow", bold: true },
-        { text: " enabling credit-gated editing and real-time agent-driven design iteration." },
+        {
+          text: " enabling credit-gated editing and real-time agent-driven design iteration.",
+        },
       ],
       [
         { text: "Developed a " },
@@ -238,7 +256,9 @@ export const experiences = [
       [
         { text: "Built a " },
         { text: "multimodal inventory search", bold: true },
-        { text: " enabling queries by image or text, both vectorized and ranked against a " },
+        {
+          text: " enabling queries by image or text, both vectorized and ranked against a ",
+        },
         { text: "Milvus", bold: true },
         { text: " DB via " },
         { text: "cosine similarity", bold: true },
@@ -261,7 +281,9 @@ export const experiences = [
         { text: "user-scoped vector embeddings", bold: true },
         { text: " in " },
         { text: "Milvus", bold: true },
-        { text: " to continuously learn and refine personalized jewelry design preferences across sessions. Optimized " },
+        {
+          text: " to continuously learn and refine personalized jewelry design preferences across sessions. Optimized ",
+        },
         { text: "ANN-based embedding retrieval to sub-80ms", bold: true },
         { text: " latency" },
       ],
@@ -275,7 +297,9 @@ export const experiences = [
         { text: "." },
       ],
       [
-        { text: "Improved reliability and performance across microservices deployed with " },
+        {
+          text: "Improved reliability and performance across microservices deployed with ",
+        },
         { text: "Docker", bold: true },
         { text: ", " },
         { text: "Firebase", bold: true },
@@ -318,6 +342,7 @@ export const projects = [
     link: "https://keyzen.theshiva.xyz/",
     preview: "/projects/keyzen-light.png",
     previewDark: "/projects/keyzen.png",
+    github: "ShivaBhattacharjee/KeyZen",
   },
   {
     title: "taptickit",
@@ -328,16 +353,19 @@ export const projects = [
     status: "active",
     link: "https://www.npmjs.com/package/taptickit",
     illustration: "taptickit",
+    github: "thor-op/taptickit",
   },
   {
     title: "Image Sonification",
     category: "Research Project · Web App",
-    description: "Converts images to audio by mapping pixel colour and position to audio frequencies. Supports real-time playback and reverse synthesis to reconstruct images from audio.",
+    description:
+      "Converts images to audio by mapping pixel colour and position to audio frequencies. Supports real-time playback and reverse synthesis to reconstruct images from audio.",
     techstacks: ["React", "TypeScript", "Web Audio API", "Vite"],
     status: "active",
     link: "https://sonification.shiva.codes",
     preview: "/sonification-light.png",
     previewDark: "/sonification.png",
+    github: "ShivaBhattacharjee/image-sonification",
   },
 ];
 
@@ -363,7 +391,16 @@ export const hackathons = [
       { text: "IIM Shillong", bold: true },
       { text: " entrepreneurship event." },
     ],
-    techstacks: ["React JS", "Node.js", "MongoDB", "Google Maps API" ,"Gemini 1.5 Pro" ,"Python" , "YOLO" , "Vite"],
+    techstacks: [
+      "React JS",
+      "Node.js",
+      "MongoDB",
+      "Google Maps API",
+      "Gemini 1.5 Pro",
+      "Python",
+      "YOLO",
+      "Vite",
+    ],
     link: "https://github.com/ShivaBhattacharjee/WasteEasy",
   },
   {
@@ -375,11 +412,17 @@ export const hackathons = [
     body: [
       { text: "Built a " },
       { text: "Google Maps-style smart parking platform", bold: true },
-      { text: " for Guwahati where users can discover nearby parking spots, calculate the " },
+      {
+        text: " for Guwahati where users can discover nearby parking spots, calculate the ",
+      },
       { text: "shortest route", bold: true },
-      { text: " to available locations, and make faster parking decisions in busy areas. Added " },
+      {
+        text: " to available locations, and make faster parking decisions in busy areas. Added ",
+      },
       { text: "community-driven features", bold: true },
-      { text: " like ratings, written reviews, on-ground image uploads, and complaint reporting to flag incorrect info or local issues. The " },
+      {
+        text: " like ratings, written reviews, on-ground image uploads, and complaint reporting to flag incorrect info or local issues. The ",
+      },
       { text: "crowdsourced data model", bold: true },
       { text: " kept listings fresh and practical, helping the project win " },
       { text: "1st prize at Technophilia", bold: true },
@@ -396,13 +439,17 @@ export const hackathons = [
     body: [
       { text: "Built a medical attendance system in a " },
       { text: "20-hour sprint", bold: true },
-      { text: " to digitize attendance for healthcare staff and trainees. Implemented " },
+      {
+        text: " to digitize attendance for healthcare staff and trainees. Implemented ",
+      },
       { text: "rapid check-in flows", bold: true },
-      { text: ", role-based records, and basic reporting to reduce manual entry and improve shift-level visibility. The speed of execution and practical utility secured " },
+      {
+        text: ", role-based records, and basic reporting to reduce manual entry and improve shift-level visibility. The speed of execution and practical utility secured ",
+      },
       { text: "2nd prize at Hack GCU", bold: true },
       { text: "." },
     ],
-    techstacks: ["React", "Node.js", "Express", "MongoDB" , "Python" , "OpenCV"],
+    techstacks: ["React", "Node.js", "Express", "MongoDB", "Python", "OpenCV"],
   },
   {
     title: "Campus Safety App",
@@ -416,10 +463,18 @@ export const hackathons = [
       { text: " by building a campus safety app that enabled " },
       { text: "incident reporting, location-aware alerts", bold: true },
       { text: ", and faster coordination during emergencies. Built with " },
-      { text: "Next.js 14, Google Maps API, serverless functions, and Socket.IO", bold: true },
+      {
+        text: "Next.js 14, Google Maps API, serverless functions, and Socket.IO",
+        bold: true,
+      },
       { text: " for real-time updates and communication." },
     ],
-    techstacks: ["Next.js 14", "Google Maps API", "Serverless Functions", "Socket.IO"],
+    techstacks: [
+      "Next.js 14",
+      "Google Maps API",
+      "Serverless Functions",
+      "Socket.IO",
+    ],
   },
   {
     title: "Real-time Space Data Terminal",
@@ -430,11 +485,20 @@ export const hackathons = [
     body: [
       { text: "Won " },
       { text: "3rd position", bold: true },
-      { text: " by building a live space intelligence dashboard that combined " },
-      { text: "Mars weather updates, ISS live tracker, near-Earth asteroid monitoring", bold: true },
-      { text: ", and NASA's Astronomy Picture of the Day in one terminal-style interface. Built with " },
+      {
+        text: " by building a live space intelligence dashboard that combined ",
+      },
+      {
+        text: "Mars weather updates, ISS live tracker, near-Earth asteroid monitoring",
+        bold: true,
+      },
+      {
+        text: ", and NASA's Astronomy Picture of the Day in one terminal-style interface. Built with ",
+      },
       { text: "Next.js, Three.js, and NASA Open APIs", bold: true },
-      { text: " with real-time data refresh and interactive visual rendering." },
+      {
+        text: " with real-time data refresh and interactive visual rendering.",
+      },
     ],
     techstacks: ["Next.js", "Three.js", "NASA Open APIs"],
   },
@@ -449,7 +513,9 @@ export const hackathons = [
       { text: "SIH 2023", bold: true },
       { text: " in my " },
       { text: "very first semester", bold: true },
-      { text: " of college. Figured it out on the fly and made it through the " },
+      {
+        text: " of college. Figured it out on the fly and made it through the ",
+      },
       { text: "national rounds", bold: true },
       { text: "." },
     ],
@@ -464,7 +530,9 @@ export const hackathons = [
     body: [
       { text: "Built a " },
       { text: "decentralised loan management app on Ethereum", bold: true },
-      { text: " where users can issue loans, receive loans, repay dues, and flag defaults, all with " },
+      {
+        text: " where users can issue loans, receive loans, repay dues, and flag defaults, all with ",
+      },
       { text: "transparent on-chain records", bold: true },
       { text: ". The protocol was designed around " },
       { text: "trust-minimised lending", bold: true },
@@ -481,36 +549,64 @@ export const hackathons = [
 
 export const research = [
   {
-    title: "PolySpeech-HS: Multilingual Non-Autoregressive Text-to-Speech Synthesis with Hidden-State Adapters",
+    title:
+      "PolySpeech-HS: Multilingual Non-Autoregressive Text-to-Speech Synthesis with Hidden-State Adapters",
     category: "Speech Synthesis & Multilingual AI",
-    description: "A non-autoregressive text-to-speech (TTS) multilingual synthesis framework designed to address the linguistic diversity and real-time deployment challenges of Indian languages. By deploying a unified encoder-decoder architecture paired with lightweight hidden-state adapters, PolySpeech-HS enables efficient cross-lingual generalization while preserving language-specific prosodic nuances. Achieved state-of-the-art performance with MOS of 4.30, MCD of 4.7 dB, and RTF of 0.13 across six Indian languages.",
-    techstacks: ["TTS", "Non-Autoregressive", "Hidden-State Adapters", "Multilingual AI", "Indian Languages", "AMO-HSA"],
+    description:
+      "A non-autoregressive text-to-speech (TTS) multilingual synthesis framework designed to address the linguistic diversity and real-time deployment challenges of Indian languages. By deploying a unified encoder-decoder architecture paired with lightweight hidden-state adapters, PolySpeech-HS enables efficient cross-lingual generalization while preserving language-specific prosodic nuances. Achieved state-of-the-art performance with MOS of 4.30, MCD of 4.7 dB, and RTF of 0.13 across six Indian languages.",
+    techstacks: [
+      "TTS",
+      "Non-Autoregressive",
+      "Hidden-State Adapters",
+      "Multilingual AI",
+      "Indian Languages",
+      "AMO-HSA",
+    ],
     status: "under-review",
     link: "#",
     journal: "IEEE Transactions on Audio, Speech and Language Processing",
     year: "2025",
-    collaboration: "Vellore Institute of Technology"
+    collaboration: "Vellore Institute of Technology",
   },
   {
-    title: "A Novel Data-Centric Transformer Fine-Tuning: A Modular Framework for Rapid Domain Adaptation and Deployment",
+    title:
+      "A Novel Data-Centric Transformer Fine-Tuning: A Modular Framework for Rapid Domain Adaptation and Deployment",
     category: "Large Language Models & Domain Adaptation",
-    description: "A data-centric, hardware-light workflow for fine-tuning transformers that sidesteps costly LLM APIs. Automatically scrapes high-signal web content and converts it into Q&A pairs to fine-tune a GPT-2-Medium model (355M parameters) in ~7 minutes on a single RTX-3060. Achieves 67.3% accuracy (+34% over base model) with 1.4s median latency and zero inference cost.",
-    techstacks: ["GPT-2", "LoRA", "8-bit Adam", "Domain Adaptation", "Next.js", "Q&A Generation", "Fine-tuning"],
+    description:
+      "A data-centric, hardware-light workflow for fine-tuning transformers that sidesteps costly LLM APIs. Automatically scrapes high-signal web content and converts it into Q&A pairs to fine-tune a GPT-2-Medium model (355M parameters) in ~7 minutes on a single RTX-3060. Achieves 67.3% accuracy (+34% over base model) with 1.4s median latency and zero inference cost.",
+    techstacks: [
+      "GPT-2",
+      "LoRA",
+      "8-bit Adam",
+      "Domain Adaptation",
+      "Next.js",
+      "Q&A Generation",
+      "Fine-tuning",
+    ],
     status: "under-review",
     link: "#",
     journal: "IEEE Transactions on Computational Social Systems",
     year: "2025",
-    collaboration: "Vellore Institute of Technology"
+    collaboration: "Vellore Institute of Technology",
   },
   {
-    title: "Fine-Tuning Mistral 22B: The First Large Language Model for Assamese Language Tasks",
+    title:
+      "Fine-Tuning Mistral 22B: The First Large Language Model for Assamese Language Tasks",
     category: "Low-Resource Language Processing",
-    description: "The first fine-tuned Large Language Model specifically engineered for Assamese, a low-resource Indo-Aryan language spoken by approximately 15 million individuals. Introduces AssamText-750K dataset and custom Unicode mapping system exclusively for Assamese. This pioneering work becomes the first and only Assamese LLM backed by language-specific Unicode infrastructure, achieving 20% average improvement across text generation fluency, sentiment analysis accuracy, and Assamese-to-English translation quality.",
-    techstacks: ["Mistral 22B", "LoRA", "Unicode Mapping", "Assamese NLP", "Low-Resource Languages", "AssamText-750K"],
+    description:
+      "The first fine-tuned Large Language Model specifically engineered for Assamese, a low-resource Indo-Aryan language spoken by approximately 15 million individuals. Introduces AssamText-750K dataset and custom Unicode mapping system exclusively for Assamese. This pioneering work becomes the first and only Assamese LLM backed by language-specific Unicode infrastructure, achieving 20% average improvement across text generation fluency, sentiment analysis accuracy, and Assamese-to-English translation quality.",
+    techstacks: [
+      "Mistral 22B",
+      "LoRA",
+      "Unicode Mapping",
+      "Assamese NLP",
+      "Low-Resource Languages",
+      "AssamText-750K",
+    ],
     status: "under-review",
     link: "#",
     journal: "IEEE Transactions on Neural Networks and Learning Systems",
     year: "2025",
-    collaboration: "Vellore Institute of Technology"
-  }
+    collaboration: "Vellore Institute of Technology",
+  },
 ];

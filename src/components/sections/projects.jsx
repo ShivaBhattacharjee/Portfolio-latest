@@ -6,23 +6,24 @@ import { Badge } from "@/components/ui/badge";
 import { TechBadge } from "@/lib/tech-icons";
 import { motion, AnimatePresence } from "motion/react";
 import { TaptickitIllustration } from "@/components/illustrations/taptickit-illustration";
+import IconStar from "@/components/icons/star";
 
 const projectIllustrations = {
   taptickit: TaptickitIllustration,
-}
+};
 
 const corners = [
   { position: "-top-[3px] -left-[3px]", border: "border-t border-l" },
   { position: "-top-[3px] -right-[3px]", border: "border-t border-r" },
   { position: "-bottom-[3px] -left-[3px]", border: "border-b border-l" },
   { position: "-bottom-[3px] -right-[3px]", border: "border-b border-r" },
-]
+];
 
 const flickerKeyframes = {
   opacity: [0, 1, 0.3, 1, 0.6, 1],
-}
+};
 
-const previewSizes = "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+const previewSizes = "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw";
 
 const Projects = ({
   category,
@@ -34,10 +35,11 @@ const Projects = ({
   preview,
   previewDark,
   illustration,
+  stars,
   index = 0,
 }) => {
-  const [isHovered, setIsHovered] = useState(false)
-  const Illustration = illustration ? projectIllustrations[illustration] : null
+  const [isHovered, setIsHovered] = useState(false);
+  const Illustration = illustration ? projectIllustrations[illustration] : null;
 
   return (
     <motion.a
@@ -49,7 +51,11 @@ const Projects = ({
       onMouseLeave={() => setIsHovered(false)}
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
+      transition={{
+        duration: 0.4,
+        delay: index * 0.1,
+        ease: [0.16, 1, 0.3, 1],
+      }}
     >
       <AnimatePresence>
         {isHovered && (
@@ -81,7 +87,9 @@ const Projects = ({
             className={`border-b border-black/[0.06] dark:border-white/[0.06] ${Illustration ? "relative aspect-[8/5] w-full overflow-hidden bg-zinc-100 dark:bg-zinc-950" : "relative aspect-[8/5] w-full overflow-hidden bg-white dark:bg-black"}`}
           >
             {Illustration ? (
-              <div className={`absolute inset-0 flex items-center justify-center transition-[filter] duration-500 ${isHovered ? "grayscale-0" : "grayscale"}`}>
+              <div
+                className={`absolute inset-0 flex items-center justify-center transition-[filter] duration-500 ${isHovered ? "grayscale-0" : "grayscale"}`}
+              >
                 <Illustration isCardHovered={isHovered} />
               </div>
             ) : previewDark ? (
@@ -91,6 +99,7 @@ const Projects = ({
                   alt={`${title} preview`}
                   fill
                   sizes={previewSizes}
+                  loading="eager"
                   className={`object-cover transition-[filter] duration-500 dark:hidden ${isHovered ? "grayscale-0" : "grayscale"}`}
                 />
                 <Image
@@ -98,32 +107,44 @@ const Projects = ({
                   alt={`${title} preview`}
                   fill
                   sizes={previewSizes}
+                  loading="eager"
                   className={`hidden object-cover transition-[filter] duration-500 dark:block ${isHovered ? "grayscale-0" : "grayscale"}`}
                 />
               </>
             ) : (
-              <Image
-                src={preview}
-                alt={`${title} preview`}
-                fill
-                sizes={previewSizes}
-                className={`object-cover transition-[filter] duration-500 ${isHovered ? "grayscale-0" : "grayscale"}`}
-              />
+<Image
+                  src={preview}
+                  alt={`${title} preview`}
+                  fill
+                  sizes={previewSizes}
+                  loading="eager"
+                  className={`object-cover transition-[filter] duration-500 ${isHovered ? "grayscale-0" : "grayscale"}`}
+                />
             )}
           </div>
         </div>
       )}
 
       <div className="p-3 md:p-4">
-        <div className="mb-2 flex items-center justify-between">
+<div className="mb-2 flex items-center justify-between">
           <p className="text-[10px] font-medium text-muted-foreground md:text-[11px]">{category}</p>
-          <Badge variant={status} className="ml-2">
-            {status === "active" ? "Active" : "Discontinued"}
-          </Badge>
+          <div className="flex items-center gap-2">
+            <Badge variant={status}>
+              {status === "active" ? "Active" : "Discontinued"}
+            </Badge>
+            {stars !== null && stars !== undefined && (
+              <span className={`flex items-center gap-0.5 text-[10px] font-medium text-muted-foreground transition-colors duration-300 md:text-xs ${isHovered ? "text-yellow-500" : ""}`}>
+                <IconStar size="12px" className={isHovered ? "text-yellow-500" : "text-muted-foreground"} />
+                {stars}
+              </span>
+            )}
+          </div>
         </div>
 
         <h1 className="mb-1.5 text-sm font-semibold md:text-base">{title}</h1>
-        <p className="mb-3 font-space-mono text-[11px] leading-relaxed text-muted-foreground md:text-xs">{description}</p>
+        <p className="mb-3 font-space-mono text-[11px] leading-relaxed text-muted-foreground md:text-xs">
+          {description}
+        </p>
 
         <div className="flex flex-wrap gap-1.5">
           {techstacks.map((tech, index) => (

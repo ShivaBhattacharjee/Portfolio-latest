@@ -1,4 +1,5 @@
 const GITHUB_GRAPHQL_ENDPOINT = "https://api.github.com/graphql";
+const GITHUB_REST_ENDPOINT = "https://api.github.com";
 
 const LEVEL_MAP = {
   NONE: 0,
@@ -118,5 +119,20 @@ export async function fetchGitHubContributions(username = "shivabhattacharjee") 
     return { contributions, lifetimeTotal };
   } catch {
     return { contributions: [], lifetimeTotal: 0 };
+  }
+}
+
+export async function fetchGitHubStars(repoFullName) {
+  if (!repoFullName) return null;
+  try {
+    const res = await fetch(
+      `${GITHUB_REST_ENDPOINT}/repos/${repoFullName}`,
+      { next: { revalidate: 3600 } }
+    );
+    if (!res.ok) return null;
+    const data = await res.json();
+    return data.stargazers_count ?? null;
+  } catch {
+    return null;
   }
 }
