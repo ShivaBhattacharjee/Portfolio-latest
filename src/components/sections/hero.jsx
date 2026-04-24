@@ -156,7 +156,6 @@ function SocialButton({ label, href, icon, external, platform, username, data, l
   };
 
   const handleMouseEnter = (e) => {
-    // Jump the spring immediately to current cursor so it doesn't fly in from top-left
     x.set(e.clientX - 160);
     y.set(e.clientY + 12);
     springX.jump(e.clientX - 160);

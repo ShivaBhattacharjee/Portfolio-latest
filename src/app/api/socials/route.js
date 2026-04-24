@@ -42,7 +42,6 @@ export async function GET() {
         bio: "",
         location: "Guwahati, Assam, India",
         stats: [
-          { label: "followers", value: "2,576" },
           { label: "connections", value: "500+" }
         ]
       },
@@ -50,7 +49,7 @@ export async function GET() {
         name: "Shiva",
         username: "sh1xva",
         avatar: "https://github.com/shivabhattacharjee.png",
-        bio: "I brain no longer brains",
+        bio: "My brain no longer brains",
         location: "Mental Hospital",
         stats: []
       },
