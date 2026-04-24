@@ -20,9 +20,7 @@ const corners = [
   { position: "-bottom-[3px] -right-[3px]", border: "border-b border-r" },
 ];
 
-const flickerKeyframes = {
-  opacity: [0, 1, 0.3, 1, 0.6, 1],
-};
+
 
 const previewSizes = "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw";
 
@@ -64,7 +62,7 @@ const Projects = ({
             <motion.span
               className="pointer-events-none absolute -inset-[3px] border border-dashed border-black/50 dark:border-white/50"
               initial={{ opacity: 0 }}
-              animate={flickerKeyframes}
+              animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.4, ease: "easeOut" }}
             />
@@ -73,7 +71,7 @@ const Projects = ({
                 key={position}
                 className={`pointer-events-none absolute ${position} h-[6px] w-[6px] ${border} border-black dark:border-white`}
                 initial={{ opacity: 0 }}
-                animate={flickerKeyframes}
+                animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.4, ease: "easeOut" }}
               />
