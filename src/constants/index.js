@@ -339,7 +339,7 @@ export const projects = [
       "A typing speed test built around the Keychron keyboard aesthetic with audio feedback on every keystroke. Tracks WPM, accuracy, and stats with a clean, minimal UI.",
     techstacks: ["Next.js", "TypeScript", "Motion", "Recharts"],
     status: "active",
-    link: "https://keyzen.theshiva.xyz/",
+    link: "https://keyzen.theshiva.xyz/landing",
     preview: "/projects/keyzen-light.png",
     previewDark: "/projects/keyzen.png",
     github: "ShivaBhattacharjee/KeyZen",
