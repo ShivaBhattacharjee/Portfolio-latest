@@ -60,7 +60,7 @@ export const notableAchievements = [
       },
     ],
     link: "https://github.com/ShivaBhattacharjee/lending-blockchain",
-    linkLabel: "lending-blockchain on GitHub",
+    linkLabel: "Lendchain on GitHub",
   },
   {
     title: "In the news",

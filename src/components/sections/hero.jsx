@@ -1,6 +1,11 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence, useMotionValue, useSpring } from "motion/react";
+import {
+  motion,
+  AnimatePresence,
+  useMotionValue,
+  useSpring,
+} from "motion/react";
 import XTwitterIcon from "@/components/icons/x-twitter";
 import GithubIcon from "@/components/icons/github";
 import LinkedinIcon from "@/components/icons/linkedin";
@@ -15,7 +20,12 @@ import ClipboardIcon from "@/components/icons/clipboard";
 import { CornerBrackets } from "@/components/ui/corner-brackets";
 import { notableAchievements } from "@/constants";
 
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import LocationIcon from "@/components/icons/location";
 
 const fadeUp = (delay = 0) => ({
@@ -65,12 +75,62 @@ const socialLinks = [
   },
 ];
 
+const achievementStats = [
+  { value: "5", label: "hackathon wins" },
+  { value: "SIH", label: "2023 qualifier" },
+  { value: "15k", label: "users reached" },
+  { value: "$1.5k+", label: "grants & prizes" },
+];
+
+const achievementMeta = {
+  "Smart India Hackathon": {
+    kicker: "National stage",
+    signal: "SIH '23",
+  },
+  Hackathons: {
+    kicker: "Competitive builds",
+    signal: "5 wins",
+  },
+  "Rise In bounty": {
+    kicker: "Protocol work",
+    signal: "ETH",
+  },
+  "In the news": {
+    kicker: "Language AI",
+    signal: "Press",
+  },
+  "Side project at scale": {
+    kicker: "Live traffic",
+    signal: "15k",
+  },
+};
+
+function AchievementBody({ body }) {
+  if (!Array.isArray(body)) return body;
+
+  return body.map((seg, i) =>
+    seg.href ? (
+      <Link
+        key={i}
+        href={seg.href}
+        className="font-semibold text-foreground underline underline-offset-2 transition-colors hover:text-foreground/70"
+      >
+        {seg.text}
+      </Link>
+    ) : seg.bold ? (
+      <strong key={i} className="font-semibold text-foreground">
+        {seg.text}
+      </strong>
+    ) : (
+      <span key={i}>{seg.text}</span>
+    ),
+  );
+}
+
 function SocialPreviewCard({ loading, data, platform, username }) {
-
-
   if (loading) {
     return (
-      <div className="flex w-[320px] flex-col gap-4 font-space-mono animate-pulse">
+      <div className="flex w-[320px] animate-pulse flex-col gap-4 font-space-mono">
         <div className="flex items-center gap-3">
           <div className="h-14 w-14 rounded-full bg-muted"></div>
           <div className="flex flex-col gap-2">
@@ -91,33 +151,35 @@ function SocialPreviewCard({ loading, data, platform, username }) {
   if (!data) return null;
 
   return (
-    <div className="flex w-[320px] flex-col gap-2 font-space-mono text-left">
+    <div className="flex w-[320px] flex-col gap-2 text-left font-space-mono">
       {data.banner && (
         <div className="-mx-4 -mt-4 mb-2 h-20 overflow-hidden">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={data.banner} alt="Banner" className="h-full w-full object-cover" />
+          <img
+            src={data.banner}
+            alt="Banner"
+            className="h-full w-full object-cover"
+          />
         </div>
       )}
-      <div className={`flex gap-3 relative z-10 ${data.banner ? "flex-col items-start -mt-12" : "items-center"}`}>
+      <div
+        className={`relative z-10 flex gap-3 ${data.banner ? "-mt-12 flex-col items-start" : "items-center"}`}
+      >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={data.avatar || "https://github.com/shivabhattacharjee.png"}
           alt={data.name}
-          className={`rounded-full object-cover bg-background ${data.banner ? "h-[68px] w-[68px] border-[3px] border-card" : "h-14 w-14 border border-border"}`}
+          className={`rounded-full bg-background object-cover ${data.banner ? "h-[68px] w-[68px] border-[3px] border-card" : "h-14 w-14 border border-border"}`}
         />
         <div className={`flex flex-col ${data.banner ? "-mt-1" : ""}`}>
           <span className="font-doto text-base font-bold text-foreground">
             {data.name}
           </span>
-          <span className="text-sm text-muted-foreground">
-            {data.username}
-          </span>
+          <span className="text-sm text-muted-foreground">{data.username}</span>
         </div>
       </div>
       {data.bio && (
-        <p className="text-sm text-foreground line-clamp-3">
-          {data.bio}
-        </p>
+        <p className="line-clamp-3 text-sm text-foreground">{data.bio}</p>
       )}
       {data.location && (
         <div className="flex items-center gap-1.5 text-sm text-muted-foreground">
@@ -141,7 +203,16 @@ function SocialPreviewCard({ loading, data, platform, username }) {
   );
 }
 
-function SocialButton({ label, href, icon, external, platform, username, data, loading }) {
+function SocialButton({
+  label,
+  href,
+  icon,
+  external,
+  platform,
+  username,
+  data,
+  loading,
+}) {
   const [isHovered, setIsHovered] = useState(false);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -194,7 +265,7 @@ function SocialButton({ label, href, icon, external, platform, username, data, l
               animate={{ opacity: 1, x: 0, scale: 1 }}
               exit={{ opacity: 0, x: -10, scale: 0.95 }}
               transition={{ duration: 0.2, ease: "easeOut" }}
-              className="flex w-[320px] flex-col gap-3 rounded-xl overflow-hidden bg-background/30 backdrop-blur-2xl backdrop-saturate-150 p-4 shadow-2xl border border-white/20 dark:border-white/10"
+              className="flex w-[320px] flex-col gap-3 overflow-hidden rounded-xl border border-white/20 bg-background/30 p-4 shadow-2xl backdrop-blur-2xl backdrop-saturate-150 dark:border-white/10"
               style={{
                 position: "fixed",
                 left: springX,
@@ -203,7 +274,12 @@ function SocialButton({ label, href, icon, external, platform, username, data, l
                 pointerEvents: "none",
               }}
             >
-              <SocialPreviewCard platform={platform} username={username} data={data} loading={loading} />
+              <SocialPreviewCard
+                platform={platform}
+                username={username}
+                data={data}
+                loading={loading}
+              />
             </motion.div>
           )}
         </AnimatePresence>
@@ -299,7 +375,8 @@ const Hero = ({ contributionData = [], lifetimeTotal = 0 }) => {
               onClick={() => {
                 navigator.clipboard.writeText("npx shivadev");
                 toast.success("Copied to clipboard", {
-                  description: "You can now paste it in your terminal to see the cli version of my portfolio",
+                  description:
+                    "You can now paste it in your terminal to see the cli version of my portfolio",
                   icon: <ClipboardIcon className="h-4 w-4" />,
                   classNames: { description: "font-space-mono" },
                 });
@@ -331,11 +408,89 @@ const Hero = ({ contributionData = [], lifetimeTotal = 0 }) => {
           <h5 className="mb-4 font-doto text-2xl font-medium md:text-3xl">
             About Me
           </h5>
-          <p className="text-xs font-space-mono md:text-base md:leading-relaxed text-muted-foreground">
-            I&apos;m Shiva, an <strong className="font-semibold text-foreground">Applied AI Engineer</strong>. Got into coding in 9th grade, spent a few years doing freelance work with PHP and jQuery before landing on React. The project that taught me the most was <strong className="font-semibold text-foreground"><a href="https://github.com/shivabhattacharjee/animetrix-next" target="_blank" className="underline">Animetrix</a></strong>, an anime streaming site I built in college that hit <strong className="font-semibold text-foreground">15k users and 200 GitHub stars </strong>. It was technically piracy (I was naive), broke constantly under traffic, which taught me about scalability. I rewrote the infra from scratch and got it to handle <strong className="font-semibold text-foreground">20k users</strong>, picking up <strong className="font-semibold text-foreground">Redis, Docker, horizontal scaling, and YAML </strong> along the way. Eventually got DMCA&apos;d. Worth it.
+          <p className="font-space-mono text-xs text-muted-foreground md:text-base md:leading-relaxed">
+            I&apos;m Shiva, an{" "}
+            <strong className="font-semibold text-foreground">
+              Applied AI Engineer
+            </strong>
+            . Got into coding in 9th grade, spent a few years doing freelance
+            work with PHP and jQuery before landing on React. The project that
+            taught me the most was{" "}
+            <strong className="font-semibold text-foreground">
+              <a
+                href="https://github.com/shivabhattacharjee/animetrix-next"
+                target="_blank"
+                className="underline"
+              >
+                Animetrix
+              </a>
+            </strong>
+            , an anime streaming site I built in college that hit{" "}
+            <strong className="font-semibold text-foreground">
+              15k users and 200 GitHub stars{" "}
+            </strong>
+            . It was technically piracy (I was naive), broke constantly under
+            traffic, which taught me about scalability. I rewrote the infra from
+            scratch and got it to handle{" "}
+            <strong className="font-semibold text-foreground">20k users</strong>
+            , picking up{" "}
+            <strong className="font-semibold text-foreground">
+              Redis, Docker, horizontal scaling, and YAML{" "}
+            </strong>{" "}
+            along the way. Eventually got DMCA&apos;d. Worth it.
           </p>
-          <p className="mt-4 text-xs font-space-mono md:text-base md:leading-relaxed text-muted-foreground">
-            Won <strong className="font-semibold text-foreground">5 hackathons</strong>, including qualifying for <strong className="font-semibold text-foreground">Smart India Hackathon 2023</strong> in my first semester, first from my college with roughly a ~1% selection rate. Since then I&apos;ve shipped production AI systems at a few early-stage startups. One of them I joined as a founding engineer, where I got deep into <strong className="font-semibold text-foreground">fine-tuning LLMs on low-resource Indian languages</strong> using <strong className="font-semibold text-foreground">Unsloth</strong>, containerizing models with <strong className="font-semibold text-foreground">Docker</strong>, self-hosting on servers, and exposing them as public APIs. Right now I&apos;m working at <strong className="font-semibold text-foreground"><a href="https://www.usebez.ai" target="_blank" className="underline">Bez</a></strong>, building an <strong className="font-semibold text-foreground">AI copilot for jewellery designers</strong> — where I get to work with <strong className="font-semibold text-foreground">AI agent workflows</strong>, <strong className="font-semibold text-foreground">vector search</strong>, <strong className="font-semibold text-foreground">RAG-based memory</strong>, and <strong className="font-semibold text-foreground">multimodal image pipelines</strong>.
+          <p className="mt-4 font-space-mono text-xs text-muted-foreground md:text-base md:leading-relaxed">
+            Won{" "}
+            <strong className="font-semibold text-foreground">
+              5 hackathons
+            </strong>
+            , including qualifying for{" "}
+            <strong className="font-semibold text-foreground">
+              Smart India Hackathon 2023
+            </strong>{" "}
+            in my first semester, first from my college with roughly a ~1%
+            selection rate. Since then I&apos;ve shipped production AI systems
+            at a few early-stage startups. One of them I joined as a founding
+            engineer, where I got deep into{" "}
+            <strong className="font-semibold text-foreground">
+              fine-tuning LLMs on low-resource Indian languages
+            </strong>{" "}
+            using{" "}
+            <strong className="font-semibold text-foreground">Unsloth</strong>,
+            containerizing models with{" "}
+            <strong className="font-semibold text-foreground">Docker</strong>,
+            self-hosting on servers, and exposing them as public APIs. Right now
+            I&apos;m working at{" "}
+            <strong className="font-semibold text-foreground">
+              <a
+                href="https://www.usebez.ai"
+                target="_blank"
+                className="underline"
+              >
+                Bez
+              </a>
+            </strong>
+            , building an{" "}
+            <strong className="font-semibold text-foreground">
+              AI copilot for jewellery designers
+            </strong>{" "}
+            — where I get to work with{" "}
+            <strong className="font-semibold text-foreground">
+              AI agent workflows
+            </strong>
+            ,{" "}
+            <strong className="font-semibold text-foreground">
+              vector search
+            </strong>
+            ,{" "}
+            <strong className="font-semibold text-foreground">
+              RAG-based memory
+            </strong>
+            , and{" "}
+            <strong className="font-semibold text-foreground">
+              multimodal image pipelines
+            </strong>
+            .
           </p>
         </motion.div>
 
@@ -346,19 +501,21 @@ const Hero = ({ contributionData = [], lifetimeTotal = 0 }) => {
             if you wish to connect with me
           </p>
           <div className="flex flex-wrap gap-2 p-1">
-            {socialLinks.map(({ label, href, icon, external, platform, username }) => (
-              <SocialButton
-                key={label}
-                label={label}
-                href={href}
-                icon={icon}
-                external={external}
-                platform={platform}
-                username={username}
-                data={socialData?.[platform]}
-                loading={socialsLoading}
-              />
-            ))}
+            {socialLinks.map(
+              ({ label, href, icon, external, platform, username }) => (
+                <SocialButton
+                  key={label}
+                  label={label}
+                  href={href}
+                  icon={icon}
+                  external={external}
+                  platform={platform}
+                  username={username}
+                  data={socialData?.[platform]}
+                  loading={socialsLoading}
+                />
+              ),
+            )}
           </div>
         </motion.div>
 
@@ -373,52 +530,97 @@ const Hero = ({ contributionData = [], lifetimeTotal = 0 }) => {
           <h5 className="mb-4 font-doto text-2xl font-medium md:text-3xl">
             Notable achievements
           </h5>
-          <ul className="space-y-6">
-            {notableAchievements.map(({ title, body, link, linkLabel }) => (
-              <li
-                key={title}
-                className="border-l-2 border-muted-foreground/25 pl-4"
-              >
-                <span className="text-sm font-semibold text-foreground md:text-base">
-                  {title}.{" "}
-                </span>
-                <span className="font-space-mono text-sm leading-relaxed text-muted-foreground md:text-base">
-                  {Array.isArray(body)
-                    ? body.map((seg, i) =>
-                        seg.href ? (
-                          <Link
-                            key={i}
-                            href={seg.href}
-                            className="font-semibold text-foreground underline underline-offset-2 transition-colors hover:text-foreground/70"
-                          >
-                            {seg.text}
-                          </Link>
-                        ) : seg.bold ? (
-                          <strong key={i} className="font-semibold text-foreground">
-                            {seg.text}
-                          </strong>
-                        ) : (
-                          <span key={i}>{seg.text}</span>
-                        )
-                      )
-                    : body}
-                </span>
-                {link && (
-                  <Link
-                    href={link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="ml-1 text-sm text-foreground/70 underline underline-offset-2 transition-colors hover:text-foreground md:text-base"
+          <div className="overflow-hidden border border-black/[0.08] bg-black/[0.015] dark:border-white/[0.1] dark:bg-white/[0.025]">
+            <div className="grid border-b border-black/[0.08] dark:border-white/[0.1] md:grid-cols-[1.05fr_1fr]">
+              <div className="relative overflow-hidden p-4 md:p-5">
+                <div
+                  aria-hidden
+                  className="absolute inset-0 opacity-[0.35] [background-image:linear-gradient(rgba(0,0,0,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.08)_1px,transparent_1px)] [background-size:22px_22px] dark:opacity-[0.18] dark:[background-image:linear-gradient(rgba(255,255,255,0.16)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.16)_1px,transparent_1px)]"
+                />
+                <div className="relative max-w-lg">
+                  <p className="mb-3 font-space-mono text-[10px] uppercase text-muted-foreground md:text-xs">
+                    proof index / selected outcomes
+                  </p>
+                  <p className="font-cera text-xl font-semibold leading-tight text-foreground md:text-2xl">
+                    Shipped things that got used, awarded, funded, or written
+                    about.
+                  </p>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 border-t border-black/[0.08] dark:border-white/[0.1] md:border-l md:border-t-0">
+                {achievementStats.map(({ value, label }, index) => (
+                  <div
+                    key={label}
+                    className={`p-4 md:p-5 ${index % 2 === 0 ? "border-r border-black/[0.08] dark:border-white/[0.1]" : ""} ${index < 2 ? "border-b border-black/[0.08] dark:border-white/[0.1]" : ""}`}
                   >
-                    {linkLabel}
-                  </Link>
-                )}
-              </li>
-            ))}
-          </ul>
+                    <p className="font-doto text-3xl leading-none text-foreground md:text-4xl">
+                      {value}
+                    </p>
+                    <p className="mt-2 font-space-mono text-[10px] uppercase text-muted-foreground md:text-xs">
+                      {label}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <ul className="divide-y divide-black/[0.08] dark:divide-white/[0.1]">
+              {notableAchievements.map(
+                ({ title, body, link, linkLabel }, index) => {
+                  const meta = achievementMeta[title];
+
+                  return (
+                    <li
+                      key={title}
+                      className="group grid gap-4 p-4 transition-colors hover:bg-black/[0.025] dark:hover:bg-white/[0.035] md:grid-cols-[9rem_1fr] md:p-5"
+                    >
+                      <div className="flex items-start justify-between gap-3 md:block">
+                        <span className="font-space-mono text-[10px] text-muted-foreground md:text-xs">
+                          {String(index + 1).padStart(2, "0")}
+                        </span>
+                        <div className="text-right md:mt-8 md:text-left">
+                          <p className="font-space-mono text-[10px] uppercase text-muted-foreground md:text-xs">
+                            {meta?.kicker}
+                          </p>
+                          <p className="mt-1 font-doto text-2xl leading-none text-foreground md:text-3xl">
+                            {meta?.signal}
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="border-l border-black/[0.12] pl-4 dark:border-white/[0.14] md:pl-6">
+                        <h6 className="font-cera text-base font-semibold leading-tight text-foreground md:text-lg">
+                          {title}
+                        </h6>
+                        <p className="mt-3 max-w-[72ch] font-space-mono text-xs leading-7 text-muted-foreground md:text-sm">
+                          <AchievementBody body={body} />
+                        </p>
+                        {link && (
+                          <Link
+                            href={link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="mt-4 inline-flex items-center gap-2 font-space-mono text-xs text-foreground/70 underline underline-offset-2 transition-colors hover:text-foreground md:text-sm"
+                          >
+                            <span>{linkLabel}</span>
+                            <span
+                              aria-hidden
+                              className="text-muted-foreground transition-transform group-hover:translate-x-1"
+                            >
+                              -&gt;
+                            </span>
+                          </Link>
+                        )}
+                      </div>
+                    </li>
+                  );
+                },
+              )}
+            </ul>
+          </div>
         </motion.div>
       </div>
-
     </div>
   );
 };
