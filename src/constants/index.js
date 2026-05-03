@@ -44,7 +44,7 @@ export const notableAchievements = [
       { text: " entrepreneurship event." },
     ],
     link: "https://github.com/ShivaBhattacharjee/WasteEasy",
-    linkLabel: "WasteEasy on GitHub",
+    linkLabel: "GitHub",
   },
   {
     title: "Rise In bounty",
@@ -60,7 +60,7 @@ export const notableAchievements = [
       },
     ],
     link: "https://github.com/ShivaBhattacharjee/lending-blockchain",
-    linkLabel: "Lendchain on GitHub",
+    linkLabel: "GitHub",
   },
   {
     title: "In the news",
@@ -73,6 +73,8 @@ export const notableAchievements = [
         text: ", one of the first of its kind for a low-resource Indian language.",
       },
     ],
+    link: "https://x.com/Navdyut_AI/status/1940437609744142783",
+    linkLabel: "Twitter",
   },
   {
     title: "Side project at scale",
@@ -90,7 +92,7 @@ export const notableAchievements = [
       { text: "." },
     ],
     link: "https://github.com/ShivaBhattacharjee/AnimeTrix-next",
-    linkLabel: "AnimeTrix on GitHub",
+    linkLabel: "GitHub",
   },
 ];
 

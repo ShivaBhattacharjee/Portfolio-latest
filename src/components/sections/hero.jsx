@@ -11,6 +11,7 @@ import GithubIcon from "@/components/icons/github";
 import LinkedinIcon from "@/components/icons/linkedin";
 import DiscordIcon from "@/components/icons/discord";
 import { IoIosMail } from "react-icons/io";
+import { ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import Link from "next/link";
@@ -104,6 +105,12 @@ const achievementMeta = {
     signal: "15k",
   },
 };
+
+const hatchDividerClassName =
+  "h-8 w-full border-y border-black/[0.08] text-foreground opacity-[0.06] [background-image:repeating-linear-gradient(-45deg,transparent,transparent_2px,currentColor_2px,currentColor_3px,transparent_3px,transparent_6px)] dark:border-[#eee] dark:text-white";
+
+const dotMatrixDividerClassName =
+  "h-7 w-full border-b border-black/[0.08] text-foreground opacity-[0.08] [background-image:radial-gradient(currentColor_1px,transparent_1px)] [background-size:12px_12px] dark:border-white/[0.1] dark:text-white";
 
 function AchievementBody({ body }) {
   if (!Array.isArray(body)) return body;
@@ -201,6 +208,28 @@ function SocialPreviewCard({ loading, data, platform, username }) {
       )}
     </div>
   );
+}
+
+function AchievementLinkIcon({ href, label }) {
+  const normalizedHref = href?.toLowerCase() ?? "";
+  const normalizedLabel = label?.toLowerCase() ?? "";
+
+  if (
+    normalizedHref.includes("github.com") ||
+    normalizedLabel.includes("github")
+  ) {
+    return <GithubIcon className="h-3 w-3" />;
+  }
+
+  if (
+    normalizedHref.includes("x.com") ||
+    normalizedHref.includes("twitter.com") ||
+    normalizedLabel.includes("x")
+  ) {
+    return <XTwitterIcon className="h-3 w-3" />;
+  }
+
+  return <ExternalLink className="h-3 w-3" />;
 }
 
 function SocialButton({
@@ -412,10 +441,15 @@ const Hero = ({ contributionData = [], lifetimeTotal = 0 }) => {
             I&apos;m Shiva, an{" "}
             <strong className="font-semibold text-foreground">
               Applied AI Engineer
-            </strong>
-            . Got into coding in 9th grade, spent a few years doing freelance
-            work with PHP and jQuery before landing on React. The project that
-            taught me the most was{" "}
+            </strong>{" "}
+            who learned by building things in public, breaking them under real
+            users, and then fixing the parts that failed. I started with
+            freelance PHP/jQuery work, moved into React and full-stack systems,
+            and eventually found my lane around applied AI, infra, and product
+            engineering.
+          </p>
+          <p className="mt-4 font-space-mono text-xs text-muted-foreground md:text-base md:leading-relaxed">
+            The project that taught me the most was{" "}
             <strong className="font-semibold text-foreground">
               <a
                 href="https://github.com/shivabhattacharjee/animetrix-next"
@@ -425,42 +459,23 @@ const Hero = ({ contributionData = [], lifetimeTotal = 0 }) => {
                 Animetrix
               </a>
             </strong>
-            , an anime streaming site I built in college that hit{" "}
-            <strong className="font-semibold text-foreground">
-              15k users and 200 GitHub stars{" "}
-            </strong>
-            . It was technically piracy (I was naive), broke constantly under
-            traffic, which taught me about scalability. I rewrote the infra from
-            scratch and got it to handle{" "}
-            <strong className="font-semibold text-foreground">20k users</strong>
-            , picking up{" "}
-            <strong className="font-semibold text-foreground">
-              Redis, Docker, horizontal scaling, and YAML{" "}
-            </strong>{" "}
-            along the way. Eventually got DMCA&apos;d. Worth it.
+            , an anime streaming site that reached{" "}
+            <strong className="font-semibold text-foreground">15k users</strong>{" "}
+            and forced me to learn scaling, scraping, caching, servers, and the
+            painful side of shipping fast. It was chaotic, got DMCA&apos;d, and
+            still became one of my best technical lessons.
           </p>
           <p className="mt-4 font-space-mono text-xs text-muted-foreground md:text-base md:leading-relaxed">
-            Won{" "}
+            Since then I&apos;ve won{" "}
             <strong className="font-semibold text-foreground">
               5 hackathons
             </strong>
-            , including qualifying for{" "}
+            , qualified for{" "}
             <strong className="font-semibold text-foreground">
               Smart India Hackathon 2023
-            </strong>{" "}
-            in my first semester, first from my college with roughly a ~1%
-            selection rate. Since then I&apos;ve shipped production AI systems
-            at a few early-stage startups. One of them I joined as a founding
-            engineer, where I got deep into{" "}
-            <strong className="font-semibold text-foreground">
-              fine-tuning LLMs on low-resource Indian languages
-            </strong>{" "}
-            using{" "}
-            <strong className="font-semibold text-foreground">Unsloth</strong>,
-            containerizing models with{" "}
-            <strong className="font-semibold text-foreground">Docker</strong>,
-            self-hosting on servers, and exposing them as public APIs. Right now
-            I&apos;m working at{" "}
+            </strong>
+            , and shipped production AI systems at early-stage startups. Right
+            now I&apos;m at{" "}
             <strong className="font-semibold text-foreground">
               <a
                 href="https://www.usebez.ai"
@@ -470,27 +485,8 @@ const Hero = ({ contributionData = [], lifetimeTotal = 0 }) => {
                 Bez
               </a>
             </strong>
-            , building an{" "}
-            <strong className="font-semibold text-foreground">
-              AI copilot for jewellery designers
-            </strong>{" "}
-            — where I get to work with{" "}
-            <strong className="font-semibold text-foreground">
-              AI agent workflows
-            </strong>
-            ,{" "}
-            <strong className="font-semibold text-foreground">
-              vector search
-            </strong>
-            ,{" "}
-            <strong className="font-semibold text-foreground">
-              RAG-based memory
-            </strong>
-            , and{" "}
-            <strong className="font-semibold text-foreground">
-              multimodal image pipelines
-            </strong>
-            .
+            , working on AI agent workflows, vector search, RAG memory, and
+            multimodal image pipelines.
           </p>
         </motion.div>
 
@@ -530,94 +526,98 @@ const Hero = ({ contributionData = [], lifetimeTotal = 0 }) => {
           <h5 className="mb-4 font-doto text-2xl font-medium md:text-3xl">
             Notable achievements
           </h5>
-          <div className="overflow-hidden border border-black/[0.08] bg-black/[0.015] dark:border-white/[0.1] dark:bg-white/[0.025]">
-            <div className="grid border-b border-black/[0.08] dark:border-white/[0.1] md:grid-cols-[1.05fr_1fr]">
-              <div className="relative overflow-hidden p-4 md:p-5">
-                <div
-                  aria-hidden
-                  className="absolute inset-0 opacity-[0.35] [background-image:linear-gradient(rgba(0,0,0,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.08)_1px,transparent_1px)] [background-size:22px_22px] dark:opacity-[0.18] dark:[background-image:linear-gradient(rgba(255,255,255,0.16)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.16)_1px,transparent_1px)]"
-                />
-                <div className="relative max-w-lg">
-                  <p className="mb-3 font-space-mono text-[10px] uppercase text-muted-foreground md:text-xs">
-                    proof index / selected outcomes
-                  </p>
-                  <p className="font-cera text-xl font-semibold leading-tight text-foreground md:text-2xl">
-                    Shipped things that got used, awarded, funded, or written
-                    about.
-                  </p>
+          <div className="mx-2 flex h-full items-center justify-end overflow-hidden border-x-2 border-y-2 border-dashed bg-black/[0.015] px-2 dark:bg-white/[0.025] md:mx-auto">
+            <div className="w-full">
+              <div className="grid border-b border-black/[0.08] dark:border-white/[0.1] md:grid-cols-[1.05fr_1fr]">
+                <div className="relative overflow-hidden p-4 md:p-5">
+                  <div
+                    aria-hidden
+                    className="absolute inset-0 opacity-[0.35] [background-image:linear-gradient(rgba(0,0,0,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.08)_1px,transparent_1px)] [background-size:22px_22px] dark:opacity-[0.18] dark:[background-image:linear-gradient(rgba(255,255,255,0.16)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.16)_1px,transparent_1px)]"
+                  />
+                  <div className="relative max-w-lg">
+                    <p className="mb-3 font-space-mono text-[10px] uppercase text-muted-foreground md:text-xs">
+                      proof index / selected outcomes
+                    </p>
+                    <p className="font-cera text-xl font-semibold leading-tight text-foreground md:text-2xl">
+                      Shipped things that got used, awarded, funded, or written
+                      about.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-2 border-t border-black/[0.08] dark:border-white/[0.1] md:border-l md:border-t-0">
+                  {achievementStats.map(({ value, label }, index) => (
+                    <div
+                      key={label}
+                      className={`p-4 md:p-5 ${index % 2 === 0 ? "border-r border-black/[0.08] dark:border-white/[0.1]" : ""} ${index < 2 ? "border-b border-black/[0.08] dark:border-white/[0.1]" : ""}`}
+                    >
+                      <p className="font-doto text-3xl leading-none text-foreground md:text-4xl">
+                        {value}
+                      </p>
+                      <p className="mt-2 font-space-mono text-[10px] uppercase text-muted-foreground md:text-xs">
+                        {label}
+                      </p>
+                    </div>
+                  ))}
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 border-t border-black/[0.08] dark:border-white/[0.1] md:border-l md:border-t-0">
-                {achievementStats.map(({ value, label }, index) => (
-                  <div
-                    key={label}
-                    className={`p-4 md:p-5 ${index % 2 === 0 ? "border-r border-black/[0.08] dark:border-white/[0.1]" : ""} ${index < 2 ? "border-b border-black/[0.08] dark:border-white/[0.1]" : ""}`}
-                  >
-                    <p className="font-doto text-3xl leading-none text-foreground md:text-4xl">
-                      {value}
-                    </p>
-                    <p className="mt-2 font-space-mono text-[10px] uppercase text-muted-foreground md:text-xs">
-                      {label}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
+              <div aria-hidden className={dotMatrixDividerClassName} />
 
-            <ul className="divide-y divide-black/[0.08] dark:divide-white/[0.1]">
-              {notableAchievements.map(
-                ({ title, body, link, linkLabel }, index) => {
-                  const meta = achievementMeta[title];
+              <ul className="relative space-y-3 overflow-hidden p-3 text-foreground before:pointer-events-none before:absolute before:inset-0 before:opacity-[0.035] before:content-[''] before:[background-image:repeating-linear-gradient(-45deg,transparent,transparent_2px,currentColor_2px,currentColor_3px,transparent_3px,transparent_6px)] dark:before:opacity-[0.06] md:p-4">
+                {notableAchievements.map(
+                  ({ title, body, link, linkLabel }, index) => {
+                    const meta = achievementMeta[title];
 
-                  return (
-                    <li
-                      key={title}
-                      className="group grid gap-4 p-4 transition-colors hover:bg-black/[0.025] dark:hover:bg-white/[0.035] md:grid-cols-[9rem_1fr] md:p-5"
-                    >
-                      <div className="flex items-start justify-between gap-3 md:block">
-                        <span className="font-space-mono text-[10px] text-muted-foreground md:text-xs">
-                          {String(index + 1).padStart(2, "0")}
-                        </span>
-                        <div className="text-right md:mt-8 md:text-left">
-                          <p className="font-space-mono text-[10px] uppercase text-muted-foreground md:text-xs">
-                            {meta?.kicker}
-                          </p>
-                          <p className="mt-1 font-doto text-2xl leading-none text-foreground md:text-3xl">
-                            {meta?.signal}
-                          </p>
+                    return (
+                      <li
+                        key={title}
+                        className="group relative border border-dashed border-black/[0.1] bg-background/55 px-3 py-3 transition-colors hover:bg-black/[0.025] dark:border-white/[0.12] dark:bg-background/30 dark:hover:bg-white/[0.035] md:px-4 md:py-4"
+                      >
+                        <div className="relative flex items-start justify-between gap-4">
+                          <h6 className="font-cera text-base font-semibold leading-tight text-foreground md:text-lg">
+                            {title}
+                          </h6>
+                          <span className="shrink-0 font-space-mono text-[10px] text-muted-foreground md:text-xs">
+                            {String(index + 1).padStart(2, "0")}
+                          </span>
                         </div>
-                      </div>
 
-                      <div className="border-l border-black/[0.12] pl-4 dark:border-white/[0.14] md:pl-6">
-                        <h6 className="font-cera text-base font-semibold leading-tight text-foreground md:text-lg">
-                          {title}
-                        </h6>
-                        <p className="mt-3 max-w-[72ch] font-space-mono text-xs leading-7 text-muted-foreground md:text-sm">
+                        <div className="relative mt-3 flex flex-wrap items-center gap-2 font-space-mono text-[10px] text-muted-foreground md:text-xs">
+                          <span>{meta?.kicker}</span>
+                          <span aria-hidden>.</span>
+                          <span className="bg-black/[0.08] px-2 py-1 text-foreground/80 dark:bg-white/[0.1] dark:text-foreground/85">
+                            {meta?.signal}
+                          </span>
+                          {link && (
+                            <Link
+                              href={link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              aria-label={`Open ${linkLabel}`}
+                              className="inline-flex cursor-pointer items-center gap-1.5 border border-black/[0.12] bg-black/[0.08] px-2 py-1 text-foreground/80 transition-colors hover:border-black/[0.22] hover:bg-black/[0.14] hover:text-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-foreground/40 dark:border-white/[0.14] dark:bg-white/[0.1] dark:text-foreground/85 dark:hover:border-white/[0.26] dark:hover:bg-white/[0.16]"
+                            >
+                              <AchievementLinkIcon
+                                href={link}
+                                label={linkLabel}
+                              />
+                              <span>{linkLabel}</span>
+                              <ExternalLink className="h-2.5 w-2.5 opacity-60 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                            </Link>
+                          )}
+                        </div>
+
+                        <p className="relative mt-3 max-w-[84ch] overflow-hidden font-space-mono text-xs leading-6 text-muted-foreground [-webkit-box-orient:vertical] [-webkit-line-clamp:2] [display:-webkit-box] md:text-sm">
                           <AchievementBody body={body} />
                         </p>
-                        {link && (
-                          <Link
-                            href={link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="mt-4 inline-flex items-center gap-2 font-space-mono text-xs text-foreground/70 underline underline-offset-2 transition-colors hover:text-foreground md:text-sm"
-                          >
-                            <span>{linkLabel}</span>
-                            <span
-                              aria-hidden
-                              className="text-muted-foreground transition-transform group-hover:translate-x-1"
-                            >
-                              -&gt;
-                            </span>
-                          </Link>
-                        )}
-                      </div>
-                    </li>
-                  );
-                },
-              )}
-            </ul>
+                      </li>
+                    );
+                  },
+                )}
+              </ul>
+
+              <div aria-hidden className={dotMatrixDividerClassName} />
+            </div>
           </div>
         </motion.div>
       </div>
