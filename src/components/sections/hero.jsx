@@ -232,6 +232,14 @@ function AchievementLinkIcon({ href, label }) {
   return <ExternalLink className="h-3 w-3" />;
 }
 
+function openAchievementLink(href) {
+  const opened = window.open(href, "_blank", "noopener,noreferrer");
+
+  if (opened) {
+    opened.opener = null;
+  }
+}
+
 function SocialButton({
   label,
   href,
@@ -564,7 +572,7 @@ const Hero = ({ contributionData = [], lifetimeTotal = 0 }) => {
 
               <div aria-hidden className={dotMatrixDividerClassName} />
 
-              <ul className="relative space-y-3 overflow-hidden p-3 text-foreground before:pointer-events-none before:absolute before:inset-0 before:opacity-[0.035] before:content-[''] before:[background-image:repeating-linear-gradient(-45deg,transparent,transparent_2px,currentColor_2px,currentColor_3px,transparent_3px,transparent_6px)] dark:before:opacity-[0.06] md:p-4">
+              <ul className="relative grid gap-2 overflow-hidden p-2 text-foreground before:pointer-events-none before:absolute before:inset-0 before:opacity-[0.055] before:content-[''] before:[background-image:repeating-linear-gradient(-45deg,transparent,transparent_8px,currentColor_8px,currentColor_9px)] dark:before:opacity-[0.08] md:p-3 xl:grid-cols-2">
                 {notableAchievements.map(
                   ({ title, body, link, linkLabel }, index) => {
                     const meta = achievementMeta[title];
@@ -572,42 +580,65 @@ const Hero = ({ contributionData = [], lifetimeTotal = 0 }) => {
                     return (
                       <li
                         key={title}
-                        className="group relative border border-dashed border-black/[0.1] bg-background/55 px-3 py-3 transition-colors hover:bg-black/[0.025] dark:border-white/[0.12] dark:bg-background/30 dark:hover:bg-white/[0.035] md:px-4 md:py-4"
-                      >
-                        <div className="relative flex items-start justify-between gap-4">
-                          <h6 className="font-cera text-base font-semibold leading-tight text-foreground md:text-lg">
-                            {title}
-                          </h6>
-                          <span className="shrink-0 font-space-mono text-[10px] text-muted-foreground md:text-xs">
-                            {String(index + 1).padStart(2, "0")}
-                          </span>
-                        </div>
+                        aria-label={link ? `Open ${linkLabel}` : undefined}
+                        className={`group relative border border-dashed border-black/[0.1] bg-background/70 px-3 py-3 transition-colors hover:bg-black/[0.025] dark:border-white/[0.12] dark:bg-background/55 dark:hover:bg-white/[0.035] ${link ? "cursor-pointer hover:border-black/[0.22] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-foreground/40 dark:hover:border-white/[0.26]" : ""}`}
+                        onClick={(event) => {
+                          if (!link) return;
 
-                        <div className="relative mt-3 flex flex-wrap items-center gap-2 font-space-mono text-[10px] text-muted-foreground md:text-xs">
-                          <span>{meta?.kicker}</span>
-                          <span aria-hidden>.</span>
-                          <span className="bg-black/[0.08] px-2 py-1 text-foreground/80 dark:bg-white/[0.1] dark:text-foreground/85">
-                            {meta?.signal}
-                          </span>
+                          if (
+                            event.target instanceof Element &&
+                            event.target.closest("a,button")
+                          ) {
+                            return;
+                          }
+
+                          openAchievementLink(link);
+                        }}
+                        onKeyDown={(event) => {
+                          if (!link) return;
+
+                          if (event.key === "Enter" || event.key === " ") {
+                            event.preventDefault();
+                            openAchievementLink(link);
+                          }
+                        }}
+                        role={link ? "link" : undefined}
+                        tabIndex={link ? 0 : undefined}
+                      >
+                        <div className="relative flex items-start justify-between gap-3">
+                          <div className="flex min-w-0 items-start gap-3">
+                            <span className="mt-1 shrink-0 font-space-mono text-[10px] text-muted-foreground md:text-xs">
+                              {String(index + 1).padStart(2, "0")}
+                            </span>
+                            <h6 className="font-cera text-base font-semibold leading-tight text-foreground md:text-lg xl:text-base">
+                              {title}
+                            </h6>
+                          </div>
                           {link && (
-                            <Link
-                              href={link}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              aria-label={`Open ${linkLabel}`}
-                              className="inline-flex cursor-pointer items-center gap-1.5 border border-black/[0.12] bg-black/[0.08] px-2 py-1 text-foreground/80 transition-colors hover:border-black/[0.22] hover:bg-black/[0.14] hover:text-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-foreground/40 dark:border-white/[0.14] dark:bg-white/[0.1] dark:text-foreground/85 dark:hover:border-white/[0.26] dark:hover:bg-white/[0.16]"
-                            >
+                            <span className="inline-flex shrink-0 items-center gap-1.5 border border-black/[0.12] bg-black/[0.08] px-2 py-1 font-space-mono text-[10px] text-foreground/80 transition-colors group-hover:border-black/[0.22] group-hover:bg-black/[0.14] group-hover:text-foreground dark:border-white/[0.14] dark:bg-white/[0.1] dark:text-foreground/85 dark:group-hover:border-white/[0.26] dark:group-hover:bg-white/[0.16]">
                               <AchievementLinkIcon
                                 href={link}
                                 label={linkLabel}
                               />
-                              <span>{linkLabel}</span>
+                              <span className="hidden sm:inline">
+                                {linkLabel}
+                              </span>
                               <ExternalLink className="h-2.5 w-2.5 opacity-60 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-                            </Link>
+                            </span>
                           )}
                         </div>
 
-                        <p className="relative mt-3 max-w-[84ch] overflow-hidden font-space-mono text-xs leading-6 text-muted-foreground [-webkit-box-orient:vertical] [-webkit-line-clamp:2] [display:-webkit-box] md:text-sm">
+                        <div className="relative mt-3 flex flex-wrap items-center gap-2 font-space-mono text-[10px] text-muted-foreground md:text-xs">
+                          <span>{meta?.kicker}</span>
+                          <span aria-hidden className="text-foreground/35">
+                            /
+                          </span>
+                          <span className="font-doto text-xs tracking-wide text-foreground/75 md:text-sm">
+                            {meta?.signal}
+                          </span>
+                        </div>
+
+                        <p className="relative mt-3 max-w-[84ch] overflow-hidden font-space-mono text-xs leading-6 text-muted-foreground [-webkit-box-orient:vertical] [-webkit-line-clamp:2] [display:-webkit-box] md:text-sm xl:text-xs xl:leading-5">
                           <AchievementBody body={body} />
                         </p>
                       </li>
