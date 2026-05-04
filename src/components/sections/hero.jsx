@@ -604,30 +604,32 @@ const Hero = ({ contributionData = [], lifetimeTotal = 0 }) => {
           <h5 className="mb-4 font-doto text-2xl font-medium md:text-3xl">
             Notable achievements
           </h5>
-          <ul className="space-y-2 font-space-mono text-sm text-muted-foreground">
+          <ul className="list-disc space-y-4 pl-4 marker:text-muted-foreground/40">
             {notableAchievements.map(({ title, body, link, linkLabel }) => (
-              <li key={title} className="flex items-start gap-2">
-                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-foreground/50" />
-                <span>
-                  <span className="font-semibold text-foreground">{title}</span>
-                  {" — "}
-                  <AchievementBody body={body} />
-                  {link && (
-                    <>
-                      {" "}
-                      <a
-                        href={link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 text-foreground/70 underline underline-offset-2 hover:text-foreground"
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        {linkLabel && <span>{linkLabel}</span>}
-                        <ExternalLink className="h-3 w-3" />
-                      </a>
-                    </>
-                  )}
-                </span>
+              <li
+                key={title}
+                className="font-space-mono text-xs text-muted-foreground md:text-base md:leading-relaxed"
+              >
+                <strong className="font-semibold text-foreground">
+                  {title}
+                </strong>
+                {" — "}
+                <AchievementBody body={body} />
+                {link && (
+                  <>
+                    {" "}
+                    <a
+                      href={link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-foreground/70 underline underline-offset-2 hover:text-foreground"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      {linkLabel && <span>{linkLabel}</span>}
+                      <ExternalLink className="h-3 w-3" />
+                    </a>
+                  </>
+                )}
               </li>
             ))}
           </ul>
