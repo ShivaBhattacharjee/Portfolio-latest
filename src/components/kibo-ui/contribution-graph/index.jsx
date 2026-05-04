@@ -1,4 +1,4 @@
-"use client";;
+"use client";
 import {
   differenceInCalendarDays,
   eachDayOfInterval,
@@ -38,27 +38,29 @@ const DEFAULT_LABELS = {
   },
 };
 
-const ContributionGraphContext =
-  createContext(null);
+const ContributionGraphContext = createContext(null);
 
 const useContributionGraph = () => {
   const context = useContext(ContributionGraphContext);
 
   if (!context) {
-    throw new Error("ContributionGraph components must be used within a ContributionGraph");
+    throw new Error(
+      "ContributionGraph components must be used within a ContributionGraph",
+    );
   }
 
   return context;
 };
 
-const fillHoles = activities => {
+const fillHoles = (activities) => {
   if (activities.length === 0) {
     return [];
   }
 
   // Sort activities by date to ensure correct date range
   const sortedActivities = [...activities].sort((a, b) =>
-    a.date.localeCompare(b.date));
+    a.date.localeCompare(b.date),
+  );
 
   const calendar = new Map(activities.map((a) => [a.date, a]));
 
@@ -101,7 +103,9 @@ const groupByWeeks = (activities, weekStart = 0) => {
       : subWeeks(nextDay(firstDate, weekStart), 1);
 
   const paddedActivities = [
-    ...(new Array(differenceInCalendarDays(firstDate, firstCalendarDate)).fill(undefined)),
+    ...new Array(differenceInCalendarDays(firstDate, firstCalendarDate)).fill(
+      undefined,
+    ),
     ...normalizedActivities,
   ];
 
@@ -110,7 +114,8 @@ const groupByWeeks = (activities, weekStart = 0) => {
   return new Array(numberOfWeeks)
     .fill(undefined)
     .map((_, weekIndex) =>
-      paddedActivities.slice(weekIndex * 7, weekIndex * 7 + 7));
+      paddedActivities.slice(weekIndex * 7, weekIndex * 7 + 7),
+    );
 };
 
 const getMonthLabels = (weeks, monthNames = DEFAULT_MONTH_LABELS) => {
@@ -119,7 +124,9 @@ const getMonthLabels = (weeks, monthNames = DEFAULT_MONTH_LABELS) => {
       const firstActivity = week.find((activity) => activity !== undefined);
 
       if (!firstActivity) {
-        throw new Error(`Unexpected error: Week ${weekIndex + 1} is empty: [${week}].`);
+        throw new Error(
+          `Unexpected error: Week ${weekIndex + 1} is empty: [${week}].`,
+        );
       }
 
       const month = monthNames[getMonth(parseISO(firstActivity.date))];
@@ -128,7 +135,9 @@ const getMonthLabels = (weeks, monthNames = DEFAULT_MONTH_LABELS) => {
         const monthName = new Date(firstActivity.date).toLocaleString("en-US", {
           month: "short",
         });
-        throw new Error(`Unexpected error: undefined month label for ${monthName}.`);
+        throw new Error(
+          `Unexpected error: undefined month label for ${monthName}.`,
+        );
       }
 
       const prevLabel = labels.at(-1);
@@ -209,11 +218,13 @@ export const ContributionGraph = ({
         year,
         width,
         height,
-      }}>
+      }}
+    >
       <div
         className={cn("flex w-full flex-col gap-2", className)}
         style={{ fontSize, ...style }}
-        {...props} />
+        {...props}
+      />
     </ContributionGraphContext.Provider>
   );
 };
@@ -230,19 +241,19 @@ export const ContributionGraphBlock = ({
 
   if (activity.level < 0 || activity.level > maxLevel) {
     throw new RangeError(
-      `Provided activity level ${activity.level} for ${activity.date} is out of range. It must be between 0 and ${maxLevel}.`
+      `Provided activity level ${activity.level} for ${activity.date} is out of range. It must be between 0 and ${maxLevel}.`,
     );
   }
 
   return (
     <rect
       className={cn(
-        'data-[level="0"]:fill-muted',
-        'data-[level="1"]:fill-muted-foreground/20',
-        'data-[level="2"]:fill-muted-foreground/40',
-        'data-[level="3"]:fill-muted-foreground/60',
-        'data-[level="4"]:fill-muted-foreground/80',
-        className
+        'data-[level="0"]:fill-black/[0.05] dark:data-[level="0"]:fill-white/[0.06]',
+        'data-[level="1"]:fill-black/[0.16] dark:data-[level="1"]:fill-white/[0.18]',
+        'data-[level="2"]:fill-black/[0.28] dark:data-[level="2"]:fill-white/[0.32]',
+        'data-[level="3"]:fill-black/[0.44] dark:data-[level="3"]:fill-white/[0.5]',
+        'data-[level="4"]:fill-black/[0.64] dark:data-[level="4"]:fill-white/[0.72]',
+        className,
       )}
       data-count={activity.count}
       data-date={activity.date}
@@ -253,7 +264,8 @@ export const ContributionGraphBlock = ({
       width={blockSize}
       x={(blockSize + blockMargin) * weekIndex}
       y={labelHeight + (blockSize + blockMargin) * dayIndex}
-      {...props} />
+      {...props}
+    />
   );
 };
 
@@ -266,16 +278,18 @@ export const ContributionGraphCalendar = ({
   const { weeks, width, height, blockSize, blockMargin, labels } =
     useContributionGraph();
 
-  const monthLabels = useMemo(() => getMonthLabels(weeks, labels.months), [weeks, labels.months]);
+  const monthLabels = useMemo(
+    () => getMonthLabels(weeks, labels.months),
+    [weeks, labels.months],
+  );
 
   return (
-    <div
-      className={cn("w-full overflow-hidden", className)}
-      {...props}>
+    <div className={cn("w-full overflow-hidden", className)} {...props}>
       <svg
-        className="block w-full h-auto"
+        className="block h-auto w-full"
         viewBox={`0 0 ${width} ${height}`}
-        preserveAspectRatio="xMinYMin meet">
+        preserveAspectRatio="xMinYMin meet"
+      >
         <title>Contribution Graph</title>
         {!hideMonthLabels && (
           <g className="fill-current">
@@ -283,7 +297,8 @@ export const ContributionGraphCalendar = ({
               <text
                 dominantBaseline="hanging"
                 key={weekIndex}
-                x={(blockSize + blockMargin) * weekIndex}>
+                x={(blockSize + blockMargin) * weekIndex}
+              >
                 {label}
               </text>
             ))}
@@ -300,19 +315,21 @@ export const ContributionGraphCalendar = ({
                 {children({ activity, dayIndex, weekIndex })}
               </Fragment>
             );
-          }))}
+          }),
+        )}
       </svg>
     </div>
   );
 };
 
-export const ContributionGraphFooter = ({
-  className,
-  ...props
-}) => (
+export const ContributionGraphFooter = ({ className, ...props }) => (
   <div
-    className={cn("flex flex-wrap gap-1 whitespace-nowrap sm:gap-x-4", className)}
-    {...props} />
+    className={cn(
+      "flex flex-wrap gap-1 whitespace-nowrap sm:gap-x-4",
+      className,
+    )}
+    {...props}
+  />
 );
 
 export const ContributionGraphTotalCount = ({
@@ -337,17 +354,14 @@ export const ContributionGraphTotalCount = ({
   );
 };
 
-export const ContributionGraphLegend = ({
-  className,
-  children,
-  ...props
-}) => {
+export const ContributionGraphLegend = ({ className, children, ...props }) => {
   const { labels, maxLevel, blockSize, blockRadius } = useContributionGraph();
 
   return (
     <div
       className={cn("ml-auto flex items-center gap-[3px]", className)}
-      {...props}>
+      {...props}
+    >
       <span className="mr-1 text-muted-foreground">
         {labels.legend?.less || "Less"}
       </span>
@@ -359,20 +373,22 @@ export const ContributionGraphLegend = ({
             <title>{`${level} contributions`}</title>
             <rect
               className={cn(
-                "stroke-[1px] stroke-border",
-                'data-[level="0"]:fill-muted',
-                'data-[level="1"]:fill-muted-foreground/20',
-                'data-[level="2"]:fill-muted-foreground/40',
-                'data-[level="3"]:fill-muted-foreground/60',
-                'data-[level="4"]:fill-muted-foreground/80'
+                "stroke-border stroke-[1px]",
+                'data-[level="0"]:fill-black/[0.05] dark:data-[level="0"]:fill-white/[0.06]',
+                'data-[level="1"]:fill-black/[0.16] dark:data-[level="1"]:fill-white/[0.18]',
+                'data-[level="2"]:fill-black/[0.28] dark:data-[level="2"]:fill-white/[0.32]',
+                'data-[level="3"]:fill-black/[0.44] dark:data-[level="3"]:fill-white/[0.5]',
+                'data-[level="4"]:fill-black/[0.64] dark:data-[level="4"]:fill-white/[0.72]',
               )}
               data-level={level}
               height={blockSize}
               rx={blockRadius}
               ry={blockRadius}
-              width={blockSize} />
+              width={blockSize}
+            />
           </svg>
-        ))}
+        ),
+      )}
       <span className="ml-1 text-muted-foreground">
         {labels.legend?.more || "More"}
       </span>

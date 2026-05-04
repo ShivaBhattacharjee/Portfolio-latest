@@ -10,14 +10,14 @@ import { ScrollToTopButton } from "@/components/scroll-to-top";
 
 export const metadata = {
   title: {
-    template: "%s | Shiva Bhattacharjee",
-    default: "Shiva Bhattacharjee - Full Stack Developer",
+    template: "Shiva - %s  ",
+    default: "Shiva - Applied AI Engineer",
   },
   description:
-    "Hello there I am Shiva a full stack developer and I love to build products that make people's life easier.",
+    "Hello there I am Shiva an applied ai engineer and I love to build products that make people's life easier.",
   keywords: [
     "Shiva Bhattacharjee",
-    "Full Stack Developer",
+    "Applied AI Engineer",
     "React",
     "Next.js",
     "JavaScript",

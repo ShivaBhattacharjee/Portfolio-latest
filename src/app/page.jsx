@@ -4,9 +4,7 @@ import { fetchGitHubContributions } from "@/lib/github";
 
 export const revalidate = 3600;
 
-export const metadata = {
-  title: "Shiva Bhattacharjee",
-};
+
 
 export default async function About() {
   const { contributions, lifetimeTotal } = await fetchGitHubContributions();
