@@ -92,39 +92,31 @@ function Highlight(
     });
   };
 
-  const safeSetBoundsRef = React.useRef(undefined);
+  const safeSetBounds = React.useCallback((bounds) => {
+    if (!localRef.current) return;
 
-  React.useEffect(() => {
-    safeSetBoundsRef.current = (bounds) => {
-      if (!localRef.current) return;
-
-      const containerRect = localRef.current.getBoundingClientRect();
-      const offset = boundsOffsetRef.current;
-      const newBounds = {
-        top: bounds.top - containerRect.top + offset.top,
-        left: bounds.left - containerRect.left + offset.left,
-        width: bounds.width + offset.width,
-        height: bounds.height + offset.height,
-      };
-
-      setBoundsState((prev) => {
-        if (
-          prev &&
-          prev.top === newBounds.top &&
-          prev.left === newBounds.left &&
-          prev.width === newBounds.width &&
-          prev.height === newBounds.height
-        ) {
-          return prev;
-        }
-        return newBounds;
-      });
+    const containerRect = localRef.current.getBoundingClientRect();
+    const offset = boundsOffsetRef.current;
+    const newBounds = {
+      top: bounds.top - containerRect.top + offset.top,
+      left: bounds.left - containerRect.left + offset.left,
+      width: bounds.width + offset.width,
+      height: bounds.height + offset.height,
     };
-  });
 
-  const safeSetBounds = (bounds) => {
-    safeSetBoundsRef.current?.(bounds);
-  };
+    setBoundsState((prev) => {
+      if (
+        prev &&
+        prev.top === newBounds.top &&
+        prev.left === newBounds.left &&
+        prev.width === newBounds.width &&
+        prev.height === newBounds.height
+      ) {
+        return prev;
+      }
+      return newBounds;
+    });
+  }, []);
 
   const clearBounds = React.useCallback(() => {
     setBoundsState((prev) => (prev === null ? prev : null));
@@ -146,12 +138,12 @@ function Highlight(
       if (!activeValue) return;
       const activeEl = container.querySelector(`[data-value="${activeValue}"][data-highlight="true"]`);
       if (activeEl)
-        safeSetBoundsRef.current?.(activeEl.getBoundingClientRect());
+        safeSetBounds(activeEl.getBoundingClientRect());
     };
 
     container.addEventListener('scroll', onScroll, { passive: true });
     return () => container.removeEventListener('scroll', onScroll);
-  }, [mode, activeValue]);
+  }, [mode, activeValue, safeSetBounds]);
 
   const render = (children) => {
     if (mode === 'parent') {
