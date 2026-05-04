@@ -19,7 +19,7 @@ import { GeistPixelSquare } from "geist/font/pixel";
 import GitHubContributionGraph from "./contribution-graph";
 import ClipboardIcon from "@/components/icons/clipboard";
 import { CornerBrackets } from "@/components/ui/corner-brackets";
-import { notableAchievements } from "@/constants";
+import { notableAchievements, hackathons } from "@/constants";
 
 import {
   Tooltip,
@@ -116,7 +116,9 @@ function AchievementBody({ body }) {
   if (!Array.isArray(body)) return body;
 
   return body.map((seg, i) =>
-    seg.href ? (
+    seg.href === "/hackathons" ? (
+      <HackathonsHoverLink key={i} />
+    ) : seg.href ? (
       <Link
         key={i}
         href={seg.href}
@@ -238,6 +240,74 @@ function openAchievementLink(href) {
   if (opened) {
     opened.opener = null;
   }
+}
+
+function HackathonsHoverLink() {
+  const [isHovered, setIsHovered] = useState(false);
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  const springConfig = { damping: 25, stiffness: 150, mass: 0.5 };
+  const springX = useSpring(x, springConfig);
+  const springY = useSpring(y, springConfig);
+
+  const handleMouseMove = (e) => {
+    x.set(e.clientX - 240);
+    y.set(e.clientY + 12);
+  };
+
+  const handleMouseEnter = (e) => {
+    x.set(e.clientX - 240);
+    y.set(e.clientY + 12);
+    springX.jump(e.clientX - 240);
+    springY.jump(e.clientY + 12);
+    setIsHovered(true);
+  };
+
+  const wins = hackathons.filter((h) => h.placement);
+
+  return (
+    <span
+      className="relative cursor-pointer"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={() => setIsHovered(false)}
+      onMouseMove={handleMouseMove}
+    >
+      <Link href="/hackathons" className="font-semibold text-foreground underline underline-offset-2">
+        5 hackathons
+      </Link>
+      <AnimatePresence>
+        {isHovered && (
+          <motion.div
+            initial={{ opacity: 0, x: -10, scale: 0.95 }}
+            animate={{ opacity: 1, x: 0, scale: 1 }}
+            exit={{ opacity: 0, x: -10, scale: 0.95 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+            className="flex w-[480px] flex-col gap-3 overflow-hidden rounded-xl border border-white/20 bg-background/30 p-4 shadow-2xl backdrop-blur-2xl backdrop-saturate-150 dark:border-white/10"
+            style={{
+              position: "fixed",
+              left: springX,
+              top: springY,
+              zIndex: 9999,
+              pointerEvents: "none",
+            }}
+          >
+            <p className="font-space-mono text-[10px] uppercase text-muted-foreground">
+              hackathon wins
+            </p>
+            <ul className="flex flex-col gap-2">
+              {wins.map((h) => (
+                <li key={h.title} className="flex items-center justify-between gap-2 font-space-mono text-xs">
+                  <span className="font-semibold text-foreground">{h.title}</span>
+                  <span className="shrink-0 text-muted-foreground">{h.placement} · {h.event}</span>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </span>
+  );
 }
 
 function SocialButton({
@@ -534,122 +604,33 @@ const Hero = ({ contributionData = [], lifetimeTotal = 0 }) => {
           <h5 className="mb-4 font-doto text-2xl font-medium md:text-3xl">
             Notable achievements
           </h5>
-          <div className="mx-2 flex h-full items-center justify-end overflow-hidden border-x-2 border-y-2 border-dashed bg-black/[0.015] px-2 dark:bg-white/[0.025] md:mx-auto">
-            <div className="w-full">
-              <div className="grid border-b border-black/[0.08] dark:border-white/[0.1] md:grid-cols-[1.05fr_1fr]">
-                <div className="relative overflow-hidden p-4 md:p-5">
-                  <div
-                    aria-hidden
-                    className="absolute inset-0 opacity-[0.35] [background-image:linear-gradient(rgba(0,0,0,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.08)_1px,transparent_1px)] [background-size:22px_22px] dark:opacity-[0.18] dark:[background-image:linear-gradient(rgba(255,255,255,0.16)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.16)_1px,transparent_1px)]"
-                  />
-                  <div className="relative max-w-lg">
-                    <p className="mb-3 font-space-mono text-[10px] uppercase text-muted-foreground md:text-xs">
-                      proof index / selected outcomes
-                    </p>
-                    <p className="font-cera text-xl font-semibold leading-tight text-foreground md:text-2xl">
-                      Shipped things that got used, awarded, funded, or written
-                      about.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-2 border-t border-black/[0.08] dark:border-white/[0.1] md:border-l md:border-t-0">
-                  {achievementStats.map(({ value, label }, index) => (
-                    <div
-                      key={label}
-                      className={`p-4 md:p-5 ${index % 2 === 0 ? "border-r border-black/[0.08] dark:border-white/[0.1]" : ""} ${index < 2 ? "border-b border-black/[0.08] dark:border-white/[0.1]" : ""}`}
-                    >
-                      <p className="font-doto text-3xl leading-none text-foreground md:text-4xl">
-                        {value}
-                      </p>
-                      <p className="mt-2 font-space-mono text-[10px] uppercase text-muted-foreground md:text-xs">
-                        {label}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div aria-hidden className={dotMatrixDividerClassName} />
-
-              <ul className="relative grid gap-2 overflow-hidden p-2 text-foreground before:pointer-events-none before:absolute before:inset-0 before:opacity-[0.055] before:content-[''] before:[background-image:repeating-linear-gradient(-45deg,transparent,transparent_8px,currentColor_8px,currentColor_9px)] dark:before:opacity-[0.08] md:p-3 xl:grid-cols-2">
-                {notableAchievements.map(
-                  ({ title, body, link, linkLabel }, index) => {
-                    const meta = achievementMeta[title];
-
-                    return (
-                      <li
-                        key={title}
-                        aria-label={link ? `Open ${linkLabel}` : undefined}
-                        className={`group relative border border-dashed border-black/[0.1] bg-background/70 px-3 py-3 transition-colors hover:bg-black/[0.025] dark:border-white/[0.12] dark:bg-background/55 dark:hover:bg-white/[0.035] ${link ? "cursor-pointer hover:border-black/[0.22] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-foreground/40 dark:hover:border-white/[0.26]" : ""}`}
-                        onClick={(event) => {
-                          if (!link) return;
-
-                          if (
-                            event.target instanceof Element &&
-                            event.target.closest("a,button")
-                          ) {
-                            return;
-                          }
-
-                          openAchievementLink(link);
-                        }}
-                        onKeyDown={(event) => {
-                          if (!link) return;
-
-                          if (event.key === "Enter" || event.key === " ") {
-                            event.preventDefault();
-                            openAchievementLink(link);
-                          }
-                        }}
-                        role={link ? "link" : undefined}
-                        tabIndex={link ? 0 : undefined}
+          <ul className="space-y-2 font-space-mono text-sm text-muted-foreground">
+            {notableAchievements.map(({ title, body, link, linkLabel }) => (
+              <li key={title} className="flex items-start gap-2">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-foreground/50" />
+                <span>
+                  <span className="font-semibold text-foreground">{title}</span>
+                  {" — "}
+                  <AchievementBody body={body} />
+                  {link && (
+                    <>
+                      {" "}
+                      <a
+                        href={link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 text-foreground/70 underline underline-offset-2 hover:text-foreground"
+                        onClick={(e) => e.stopPropagation()}
                       >
-                        <div className="relative flex items-start justify-between gap-3">
-                          <div className="flex min-w-0 items-start gap-3">
-                            <span className="mt-1 shrink-0 font-space-mono text-[10px] text-muted-foreground md:text-xs">
-                              {String(index + 1).padStart(2, "0")}
-                            </span>
-                            <h6 className="font-cera text-base font-semibold leading-tight text-foreground md:text-lg xl:text-base">
-                              {title}
-                            </h6>
-                          </div>
-                          {link && (
-                            <span className="inline-flex shrink-0 items-center gap-1.5 border border-black/[0.12] bg-black/[0.08] px-2 py-1 font-space-mono text-[10px] text-foreground/80 transition-colors group-hover:border-black/[0.22] group-hover:bg-black/[0.14] group-hover:text-foreground dark:border-white/[0.14] dark:bg-white/[0.1] dark:text-foreground/85 dark:group-hover:border-white/[0.26] dark:group-hover:bg-white/[0.16]">
-                              <AchievementLinkIcon
-                                href={link}
-                                label={linkLabel}
-                              />
-                              <span className="hidden sm:inline">
-                                {linkLabel}
-                              </span>
-                              <ExternalLink className="h-2.5 w-2.5 opacity-60 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-                            </span>
-                          )}
-                        </div>
-
-                        <div className="relative mt-3 flex flex-wrap items-center gap-2 font-space-mono text-[10px] text-muted-foreground md:text-xs">
-                          <span>{meta?.kicker}</span>
-                          <span aria-hidden className="text-foreground/35">
-                            /
-                          </span>
-                          <span className="font-doto text-xs tracking-wide text-foreground/75 md:text-sm">
-                            {meta?.signal}
-                          </span>
-                        </div>
-
-                        <p className="relative mt-3 max-w-[84ch] overflow-hidden font-space-mono text-xs leading-6 text-muted-foreground [-webkit-box-orient:vertical] [-webkit-line-clamp:2] [display:-webkit-box] md:text-sm xl:text-xs xl:leading-5">
-                          <AchievementBody body={body} />
-                        </p>
-                      </li>
-                    );
-                  },
-                )}
-              </ul>
-
-              <div aria-hidden className={dotMatrixDividerClassName} />
-            </div>
-          </div>
+                        {linkLabel && <span>{linkLabel}</span>}
+                        <ExternalLink className="h-3 w-3" />
+                      </a>
+                    </>
+                  )}
+                </span>
+              </li>
+            ))}
+          </ul>
         </motion.div>
       </div>
     </div>
