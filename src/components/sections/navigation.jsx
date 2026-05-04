@@ -54,7 +54,8 @@ function NavigationBar() {
       <div className="flex items-center rounded-full border border-black/[0.08] bg-black/[0.05] px-1 py-1 backdrop-blur-xl dark:border-white/[0.08] dark:bg-white/[0.05] md:px-2">
         <Tabs value={activeTab} onValueChange={handleNavigation}>
           <TabsHighlight
-            className="absolute z-0 inset-0 rounded-full bg-black/[0.08] dark:bg-white/[0.08]"
+            mode="parent"
+            className="rounded-full bg-black/[0.08] dark:bg-white/[0.08]"
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
           >
             <TabsList className="flex items-center">
