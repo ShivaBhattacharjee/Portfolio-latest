@@ -527,21 +527,19 @@ const Hero = ({ contributionData = [], lifetimeTotal = 0 }) => {
             engineering.
           </p>
           <p className="mt-4 font-space-mono text-xs text-muted-foreground md:text-base md:leading-relaxed">
-            The project that taught me the most was{" "}
+            The work that taught me the most came from building{" "}
             <strong className="font-semibold text-foreground">
-              <a
-                href="https://github.com/shivabhattacharjee/animetrix-next"
-                target="_blank"
-                className="underline"
-              >
-                Animetrix
-              </a>
+              web streaming projects
+            </strong>{" "}
+            — wiring up{" "}
+            <strong className="font-semibold text-foreground">
+              HLS / m3u8 pipelines
             </strong>
-            , an anime streaming site that reached{" "}
-            <strong className="font-semibold text-foreground">15k users</strong>{" "}
-            and forced me to learn scaling, scraping, caching, servers, and the
-            painful side of shipping fast. It was chaotic, got DMCA&apos;d, and
-            still became one of my best technical lessons.
+            , scrapers, caching layers, and servers that had to hold up under{" "}
+            <strong className="font-semibold text-foreground">15k users</strong>
+            . It was chaotic and forced me to learn scaling, infra, and the
+            painful side of shipping fast — still one of my best technical
+            lessons.
           </p>
           <p className="mt-4 font-space-mono text-xs text-muted-foreground md:text-base md:leading-relaxed">
             Since then I&apos;ve won{" "}
@@ -604,7 +602,7 @@ const Hero = ({ contributionData = [], lifetimeTotal = 0 }) => {
           <h5 className="mb-4 font-doto text-2xl font-medium md:text-3xl">
             Notable achievements
           </h5>
-          <ul className="list-disc space-y-4 pl-4 marker:text-muted-foreground/40">
+          <ul className="list-disc list-inside space-y-4 marker:text-muted-foreground/40">
             {notableAchievements.map(({ title, body, link, linkLabel }) => (
               <li
                 key={title}
