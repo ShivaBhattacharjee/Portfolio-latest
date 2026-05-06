@@ -55,7 +55,7 @@ const Timeline = ({ role, company, year, type, location, logo, logoPadding, inve
         </div>
 
         <div className="mb-3 space-y-1 md:mb-4">
-          <p className="mb-1.5 text-[10px] font-semibold uppercase tracking-wide text-muted-foreground md:mb-2 md:text-sm">Key Responsibilities</p>
+          <p className="mb-1.5 text-[10px] font-semibold uppercase tracking-wide text-muted-foreground md:mb-2 md:text-sm font-doto">Key Responsibilities</p>
           <ul className="list-disc space-y-1.5 pl-4 marker:text-muted-foreground/40 md:space-y-2">
             {responsibility.map((bullet, i) => (
               <li key={i} className="font-space-mono text-xs leading-relaxed break-words text-muted-foreground md:text-sm">

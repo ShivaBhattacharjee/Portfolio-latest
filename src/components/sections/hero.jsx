@@ -244,6 +244,7 @@ function openAchievementLink(href) {
 
 function HackathonsHoverLink() {
   const [isHovered, setIsHovered] = useState(false);
+  const [canShowPreview, setCanShowPreview] = useState(false);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
@@ -251,16 +252,43 @@ function HackathonsHoverLink() {
   const springX = useSpring(x, springConfig);
   const springY = useSpring(y, springConfig);
 
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(hover: hover) and (pointer: fine)");
+
+    const updatePreviewMode = () => {
+      setCanShowPreview(mediaQuery.matches);
+    };
+
+    updatePreviewMode();
+    mediaQuery.addEventListener("change", updatePreviewMode);
+
+    return () => mediaQuery.removeEventListener("change", updatePreviewMode);
+  }, []);
+
   const handleMouseMove = (e) => {
-    x.set(e.clientX - 240);
-    y.set(e.clientY + 12);
+    const tooltipWidth = Math.min(480, window.innerWidth - 16);
+    const nextX = Math.min(
+      Math.max(8, e.clientX - tooltipWidth / 2),
+      window.innerWidth - tooltipWidth - 8,
+    );
+    const nextY = Math.min(e.clientY + 12, window.innerHeight - 8);
+
+    x.set(nextX);
+    y.set(nextY);
   };
 
   const handleMouseEnter = (e) => {
-    x.set(e.clientX - 240);
-    y.set(e.clientY + 12);
-    springX.jump(e.clientX - 240);
-    springY.jump(e.clientY + 12);
+    const tooltipWidth = Math.min(480, window.innerWidth - 16);
+    const nextX = Math.min(
+      Math.max(8, e.clientX - tooltipWidth / 2),
+      window.innerWidth - tooltipWidth - 8,
+    );
+    const nextY = Math.min(e.clientY + 12, window.innerHeight - 8);
+
+    x.set(nextX);
+    y.set(nextY);
+    springX.jump(nextX);
+    springY.jump(nextY);
     setIsHovered(true);
   };
 
@@ -277,13 +305,13 @@ function HackathonsHoverLink() {
         5 hackathons
       </Link>
       <AnimatePresence>
-        {isHovered && (
+        {canShowPreview && isHovered && (
           <motion.div
             initial={{ opacity: 0, x: -10, scale: 0.95 }}
             animate={{ opacity: 1, x: 0, scale: 1 }}
             exit={{ opacity: 0, x: -10, scale: 0.95 }}
             transition={{ duration: 0.2, ease: "easeOut" }}
-            className="flex w-[480px] flex-col gap-3 overflow-hidden rounded-xl border border-white/20 bg-background/30 p-4 shadow-2xl backdrop-blur-2xl backdrop-saturate-150 dark:border-white/10"
+            className="flex w-[min(480px,calc(100vw-1rem))] flex-col gap-3 overflow-hidden rounded-xl border border-white/20 bg-background/30 p-4 shadow-2xl backdrop-blur-2xl backdrop-saturate-150 dark:border-white/10"
             style={{
               position: "fixed",
               left: springX,
