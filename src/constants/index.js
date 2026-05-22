@@ -335,6 +335,18 @@ export const experiences = [
 
 export const projects = [
   {
+    title: "Tokokino",
+    category: "Side Project · Web App",
+    description:
+      "A client-heavy screenshot mockup generator for creating polished product visuals with browser and device frames, backgrounds, overlays, annotations, and fast export/share flows.",
+    techstacks: ["Next.js", "TypeScript", "React", "Tailwind CSS"],
+    status: "active",
+    link: "https://tokokino.com/app",
+    preview: "/projects/tokokino-light.png",
+    previewDark: "/projects/tokokino-dark.png",
+    github: "ShivaBhattacharjee/Tokokino",
+  },
+  {
     title: "KeyZen",
     category: "Side Project · Web App",
     description:
