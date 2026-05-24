@@ -341,7 +341,7 @@ export const projects = [
       "A client-heavy screenshot mockup generator for creating polished product visuals with browser and device frames, backgrounds, overlays, annotations, and fast export/share flows.",
     techstacks: ["Next.js", "TypeScript", "React", "Tailwind CSS"],
     status: "active",
-    link: "https://tokokino.com/app",
+    link: "https://tokokino.com/",
     preview: "/projects/tokokino-light.png",
     previewDark: "/projects/tokokino-dark.png",
     github: "ShivaBhattacharjee/Tokokino",
