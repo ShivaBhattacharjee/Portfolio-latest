@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Allow: /projects/
+Allow: /experience/
+Allow: /hackathons/
+Allow: /research/
+Disallow: /api/
+Disallow: /_next/
+Disallow: /private/
+
+Sitemap: https://shiva.codes/sitemap.xml

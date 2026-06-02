@@ -7,6 +7,7 @@ import OnekoCat from "@/components/OnekoCat";
 import { SmoothScrollProvider } from "@/components/smooth-scroll-provider";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ScrollToTopButton } from "@/components/scroll-to-top";
+import WebMcpProvider from "@/components/webmcp-provider";
 
 export const metadata = {
   title: {
@@ -105,7 +106,11 @@ export default function RootLayout({ children }) {
   };
 
   return (
-    <html lang="en" suppressHydrationWarning className={`${spaceMono.variable} ${pressStart.variable}`}>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${spaceMono.variable} ${pressStart.variable}`}
+    >
       <head>
         <meta name="theme-color" content="#0B0D0E" />
         <meta name="color-scheme" content="dark light" />
@@ -144,6 +149,7 @@ export default function RootLayout({ children }) {
               <NavigationBar />
               <Toaster />
               <ScrollToTopButton />
+              <WebMcpProvider />
             </div>
           </SmoothScrollProvider>
         </ThemeProvider>
