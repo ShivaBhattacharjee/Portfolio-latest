@@ -3,47 +3,59 @@ import { NextResponse } from "next/server";
 export async function GET() {
   try {
     const [githubRes, twitterRes] = await Promise.allSettled([
-      fetch(`https://api.github.com/users/shivabhattacharjee`, { next: { revalidate: 3600 } }).then(res => res.json()),
-      fetch(`https://api.fxtwitter.com/sh17va`, { next: { revalidate: 3600 } }).then(res => res.json())
+      fetch(`https://api.github.com/users/shivabhattacharjee`, {
+        next: { revalidate: 3600 },
+      }).then((res) => res.json()),
+      fetch(`https://api.fxtwitter.com/sh17va`, {
+        next: { revalidate: 3600 },
+      }).then((res) => res.json()),
     ]);
 
     const githubData = githubRes.status === "fulfilled" ? githubRes.value : {};
-    const twitterData = twitterRes.status === "fulfilled" ? twitterRes.value?.user || {} : {};
+    const twitterData =
+      twitterRes.status === "fulfilled" ? twitterRes.value?.user || {} : {};
 
     return NextResponse.json({
       github: {
         name: githubData.name || githubData.login || "Shiva Bhattacharjee",
         username: githubData.login || "shivabhattacharjee",
-        avatar: githubData.avatar_url || "https://github.com/shivabhattacharjee.png",
-        bio: githubData.bio || "I work on AI, LLMs, and building developer tools on top of them",
+        avatar:
+          githubData.avatar_url || "https://github.com/shivabhattacharjee.png",
+        bio:
+          githubData.bio ||
+          "I work on AI, LLMs, and building developer tools on top of them",
         location: githubData.location || "Delhi, India",
         stats: [
           { label: "Repositories", value: githubData.public_repos || 60 },
-          { label: "Followers", value: githubData.followers || 180 }
-        ]
+          { label: "Followers", value: githubData.followers || 180 },
+        ],
       },
       twitter: {
         name: twitterData.name || "Shiva",
         username: twitterData.screen_name || "sh17va",
-        avatar: twitterData.avatar_url?.replace("_normal", "") || "https://github.com/shivabhattacharjee.png",
-        banner: twitterData.banner_url || "https://pbs.twimg.com/profile_banners/1186556526917324800/1757151975/1500x500",
+        avatar:
+          twitterData.avatar_url?.replace("_normal", "") ||
+          "https://github.com/shivabhattacharjee.png",
+        banner:
+          twitterData.banner_url ||
+          "https://pbs.twimg.com/profile_banners/1186556526917324800/1757151975/1500x500",
         bio: twitterData.description || "I write system prompts for a living",
         location: twitterData.location || "San Francisco, CA (Mentally)",
         stats: [
           { label: "Following", value: twitterData.following || 177 },
-          { label: "Followers", value: twitterData.followers || 3620 }
-        ]
+          { label: "Followers", value: twitterData.followers || 3620 },
+        ],
       },
       linkedin: {
         name: "Shiva Bhattacharjee",
         username: "Building AI Agents",
-        avatar: "https://pbs.twimg.com/profile_images/2040623093945864192/dur1Mty-_400x400.jpg",
-        banner: "https://media.licdn.com/dms/image/v2/D5616AQHsUhEEUkcobw/profile-displaybackgroundimage-shrink_350_1400/B56ZzKNUp8IcAg-/0/1772919017837?e=1778716800&v=beta&t=3txh8G3KbnSs8-eaLxbnAs6iQtSbhQAXShVKjcVJ-rw",
+        avatar:
+          "https://pbs.twimg.com/profile_images/2040623093945864192/dur1Mty-_400x400.jpg",
+        banner:
+          "https://media.licdn.com/dms/image/v2/D5616AQHsUhEEUkcobw/profile-displaybackgroundimage-shrink_350_1400/B56ZzKNUp8IcAg-/0/1772919017837?e=1781740800&v=beta&t=6kNVz_EaYOwEPBbnun9Wkz7UW0sX6oT8qEO_AgJcdEk",
         bio: "",
         location: "Guwahati, Assam, India",
-        stats: [
-          { label: "connections", value: "500+" }
-        ]
+        stats: [{ label: "connections", value: "500+" }],
       },
       discord: {
         name: "Shiva",
@@ -51,7 +63,7 @@ export async function GET() {
         avatar: "https://github.com/shivabhattacharjee.png",
         bio: "My brain no longer brains",
         location: "Mental Hospital",
-        stats: []
+        stats: [],
       },
       email: {
         name: "Drop an Email",
@@ -59,10 +71,13 @@ export async function GET() {
         avatar: "https://github.com/shivabhattacharjee.png",
         bio: "Whether you have a question, a project idea, or just want to say hi, feel free to reach out!",
         location: "Inbox",
-        stats: []
-      }
+        stats: [],
+      },
     });
   } catch (error) {
-    return NextResponse.json({ error: "Failed to fetch data" }, { status: 500 });
+    return NextResponse.json(
+      { error: "Failed to fetch data" },
+      { status: 500 },
+    );
   }
 }
