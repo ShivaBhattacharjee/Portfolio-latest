@@ -52,7 +52,7 @@ export async function GET() {
         avatar:
           "https://pbs.twimg.com/profile_images/2040623093945864192/dur1Mty-_400x400.jpg",
         banner:
-          "https://media.licdn.com/dms/image/v2/D5616AQHsUhEEUkcobw/profile-displaybackgroundimage-shrink_350_1400/B56ZzKNUp8IcAg-/0/1772919017837?e=1781740800&v=beta&t=6kNVz_EaYOwEPBbnun9Wkz7UW0sX6oT8qEO_AgJcdEk",
+          "https://pbs.twimg.com/profile_banners/1186556526917324800/1757151975/1500x500",
         bio: "",
         location: "Guwahati, Assam, India",
         stats: [{ label: "connections", value: "500+" }],
