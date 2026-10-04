@@ -507,6 +507,19 @@ export const experiences = [
         { text: "Tinybird logging", bold: true },
         { text: ", and disabling the Meta Conversions API gateway." },
       ],
+      [
+        { text: "Developed " },
+        { text: "B2B demo page", bold: true },
+        { text: " at " },
+        {
+          text: "demo.avenueticket.com",
+          bold: true,
+          href: "https://demo.avenueticket.com",
+        },
+        { text: " using " },
+        { text: "localStorage and mock APIs", bold: true },
+        { text: " to showcase the organizer flow without sign-in." },
+      ],
     ],
     techstacks: [
       "Hono",
