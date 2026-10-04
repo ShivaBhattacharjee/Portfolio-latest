@@ -3,7 +3,6 @@ import { Toaster } from "@/components/ui/toaster";
 import NavigationBar from "@/components/sections/navigation";
 import Footer from "@/components/sections/footer";
 import TopLoader from "@/components/top-loader";
-import { SmoothCursor } from "@/components/ui/smooth-cursor";
 import { SmoothScrollProvider } from "@/components/smooth-scroll-provider";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ScrollToTopButton } from "@/components/scroll-to-top";
@@ -137,7 +136,6 @@ export default function RootLayout({ children }) {
           disableTransitionOnChange
         >
           <TopLoader />
-          <SmoothCursor />
           <SmoothScrollProvider>
             <div className="grid min-h-[100dvh] grid-rows-[1fr_auto] overflow-x-hidden">
               <main

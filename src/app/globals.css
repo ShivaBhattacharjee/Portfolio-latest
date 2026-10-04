@@ -111,14 +111,6 @@ h6 {
   }
 }
 
-@media (any-hover: hover) and (any-pointer: fine) {
-  body.smooth-cursor-on *,
-  body.smooth-cursor-on *::before,
-  body.smooth-cursor-on *::after {
-    cursor: none !important;
-  }
-}
-
 @layer utilities {
   .button-highlighted-shadow {
     box-shadow: inset 0 2px 0 rgba(0, 0, 0, 0.08);

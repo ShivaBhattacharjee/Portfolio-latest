@@ -536,6 +536,11 @@ export const experiences = [
       "React Native",
       "Capacitor",
       "Stripe Terminal",
+      "PostgreSQL",
+      "Tinybird",
+      "Storybook",
+      "Google ML Kit",
+      "Grafana",
     ],
   },
 ];
