@@ -19,7 +19,7 @@ import { GeistPixelSquare } from "geist/font/pixel";
 import GitHubContributionGraph from "./contribution-graph";
 import ClipboardIcon from "@/components/icons/clipboard";
 import { CornerBrackets } from "@/components/ui/corner-brackets";
-import { notableAchievements, hackathons } from "@/constants";
+import { notableAchievements } from "@/constants";
 
 import {
   Tooltip,
@@ -243,98 +243,10 @@ function openAchievementLink(href) {
 }
 
 function HackathonsHoverLink() {
-  const [isHovered, setIsHovered] = useState(false);
-  const [canShowPreview, setCanShowPreview] = useState(false);
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-
-  const springConfig = { damping: 25, stiffness: 150, mass: 0.5 };
-  const springX = useSpring(x, springConfig);
-  const springY = useSpring(y, springConfig);
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia("(hover: hover) and (pointer: fine)");
-
-    const updatePreviewMode = () => {
-      setCanShowPreview(mediaQuery.matches);
-    };
-
-    updatePreviewMode();
-    mediaQuery.addEventListener("change", updatePreviewMode);
-
-    return () => mediaQuery.removeEventListener("change", updatePreviewMode);
-  }, []);
-
-  const handleMouseMove = (e) => {
-    const tooltipWidth = Math.min(480, window.innerWidth - 16);
-    const nextX = Math.min(
-      Math.max(8, e.clientX - tooltipWidth / 2),
-      window.innerWidth - tooltipWidth - 8,
-    );
-    const nextY = Math.min(e.clientY + 12, window.innerHeight - 8);
-
-    x.set(nextX);
-    y.set(nextY);
-  };
-
-  const handleMouseEnter = (e) => {
-    const tooltipWidth = Math.min(480, window.innerWidth - 16);
-    const nextX = Math.min(
-      Math.max(8, e.clientX - tooltipWidth / 2),
-      window.innerWidth - tooltipWidth - 8,
-    );
-    const nextY = Math.min(e.clientY + 12, window.innerHeight - 8);
-
-    x.set(nextX);
-    y.set(nextY);
-    springX.jump(nextX);
-    springY.jump(nextY);
-    setIsHovered(true);
-  };
-
-  const wins = hackathons.filter((h) => h.placement);
-
   return (
-    <span
-      className="relative"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={() => setIsHovered(false)}
-      onMouseMove={handleMouseMove}
-    >
-      <Link href="/hackathons" className="font-semibold text-foreground underline underline-offset-2">
-        5 hackathons
-      </Link>
-      <AnimatePresence>
-        {canShowPreview && isHovered && (
-          <motion.div
-            initial={{ opacity: 0, x: -10, scale: 0.95 }}
-            animate={{ opacity: 1, x: 0, scale: 1 }}
-            exit={{ opacity: 0, x: -10, scale: 0.95 }}
-            transition={{ duration: 0.2, ease: "easeOut" }}
-            className="flex w-[min(480px,calc(100vw-1rem))] flex-col gap-3 overflow-hidden rounded-xl border border-white/20 bg-background/30 p-4 shadow-2xl backdrop-blur-2xl backdrop-saturate-150 dark:border-white/10"
-            style={{
-              position: "fixed",
-              left: springX,
-              top: springY,
-              zIndex: 9999,
-              pointerEvents: "none",
-            }}
-          >
-            <p className="font-space-mono text-[10px] uppercase text-muted-foreground">
-              hackathon wins
-            </p>
-            <ul className="flex flex-col gap-2">
-              {wins.map((h) => (
-                <li key={h.title} className="flex items-center justify-between gap-2 font-space-mono text-xs">
-                  <span className="font-semibold text-foreground">{h.title}</span>
-                  <span className="shrink-0 text-muted-foreground">{h.placement} · {h.event}</span>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </span>
+    <Link href="/hackathons" className="font-semibold text-foreground underline underline-offset-2">
+      5 hackathons
+    </Link>
   );
 }
 
@@ -631,7 +543,7 @@ const Hero = ({ contributionData = [], lifetimeTotal = 0 }) => {
             Notable achievements
           </h5>
           <ul className="list-disc list-inside space-y-4 marker:text-muted-foreground/40">
-            {notableAchievements.map(({ title, body, link, linkLabel }) => (
+            {notableAchievements.map(({ title, body, link, linkLabel, points }) => (
               <li
                 key={title}
                 className="font-space-mono text-xs text-muted-foreground md:text-base md:leading-relaxed"
@@ -639,21 +551,51 @@ const Hero = ({ contributionData = [], lifetimeTotal = 0 }) => {
                 <strong className="font-semibold text-foreground">
                   {title}
                 </strong>
-                {" — "}
-                <AchievementBody body={body} />
-                {link && (
+                {points ? (
                   <>
-                    {" "}
-                    <a
-                      href={link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-foreground/70 underline underline-offset-2 hover:text-foreground"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      {linkLabel && <span>{linkLabel}</span>}
-                      <ExternalLink className="h-3 w-3" />
-                    </a>
+                    {" :-"}
+                    <ul className="mt-2 list-disc list-inside space-y-2 pl-4 marker:text-muted-foreground/40">
+                    {points.map((point) => (
+                      <li key={point.body.map((seg) => seg.text).join("")}>
+                        <AchievementBody body={point.body} />
+                        {point.link && (
+                          <>
+                            {" "}
+                            <a
+                              href={point.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1 text-foreground/70 underline underline-offset-2 hover:text-foreground"
+                              onClick={(e) => e.stopPropagation()}
+                            >
+                              {point.linkLabel && <span>{point.linkLabel}</span>}
+                              <ExternalLink className="h-3 w-3" />
+                            </a>
+                          </>
+                        )}
+                      </li>
+                    ))}
+                    </ul>
+                  </>
+                ) : (
+                  <>
+                    {" — "}
+                    <AchievementBody body={body} />
+                    {link && (
+                      <>
+                        {" "}
+                        <a
+                          href={link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1 text-foreground/70 underline underline-offset-2 hover:text-foreground"
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          {linkLabel && <span>{linkLabel}</span>}
+                          <ExternalLink className="h-3 w-3" />
+                        </a>
+                      </>
+                    )}
                   </>
                 )}
               </li>

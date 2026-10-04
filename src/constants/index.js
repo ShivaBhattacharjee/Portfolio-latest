@@ -77,22 +77,37 @@ export const notableAchievements = [
     linkLabel: "Twitter",
   },
   {
-    title: "Side project at scale",
-    body: [
-      { text: "Built " },
-      { text: "AnimeTrix", bold: true },
-      { text: ", an anime streaming site, hit around " },
-      { text: "15,000 users", bold: true },
-      { text: " and was handling " },
-      { text: "100 concurrent viewers", bold: true },
+    title: "Side projects at scale",
+    points: [
       {
-        text: " at peak using web scraping and some creative infra decisions. Had to take it down after a DMCA. The repo still has ",
+        body: [
+          { text: "Built " },
+          { text: "Tokokino", bold: true },
+          { text: ", a " },
+          { text: "local-first, FOSS", bold: true },
+          { text: " in-browser video + screenshot editor, handling " },
+          { text: "900k requests", bold: true },
+          { text: " with " },
+          { text: "~185 stars", bold: true },
+          { text: " on GitHub." },
+        ],
+        link: "https://github.com/ShivaBhattacharjee/Tokokino",
+        linkLabel: "GitHub",
       },
-      { text: "~190 stars", bold: true },
-      { text: "." },
+      {
+        body: [
+          { text: "Built " },
+          { text: "AnimeTrix", bold: true },
+          { text: ", an anime streaming site, hit around " },
+          { text: "15,000 users", bold: true },
+          { text: " and " },
+          { text: "100 concurrent viewers", bold: true },
+          { text: " at peak. Had to take it down after a DMCA." },
+        ],
+        link: "https://github.com/ShivaBhattacharjee/AnimeTrix-next",
+        linkLabel: "GitHub",
+      },
     ],
-    link: "https://github.com/ShivaBhattacharjee/AnimeTrix-next",
-    linkLabel: "GitHub",
   },
 ];
 
