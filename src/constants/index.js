@@ -517,7 +517,7 @@ export const experiences = [
           href: "https://demo.avenueticket.com",
         },
         { text: " using " },
-        { text: "localStorage and mock APIs", bold: true },
+        { text: "localStorage, IndexedDB, and mock APIs", bold: true },
         { text: " to showcase the organizer flow without sign-in." },
       ],
     ],
