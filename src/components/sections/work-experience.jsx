@@ -76,17 +76,27 @@ function resolveIcon(role = "", type = "") {
   return BriefcaseBusiness;
 }
 
-// Render a segmented responsibility (array of { text, bold }) or plain string.
+// Render a segmented responsibility (array of { text, bold, href }) or plain string.
 function ResponsibilitySegments({ bullet }) {
   if (Array.isArray(bullet)) {
     return bullet.map((seg, j) =>
-      seg.bold ? (
+      seg.href ? (
+        <a
+          key={j}
+          href={seg.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-semibold text-foreground underline underline-offset-2 transition-colors hover:text-foreground/70"
+        >
+          {seg.text}
+        </a>
+      ) : seg.bold ? (
         <strong key={j} className="font-semibold text-foreground">
           {seg.text}
         </strong>
       ) : (
         <span key={j}>{seg.text}</span>
-      )
+      ),
     );
   }
   return bullet;
