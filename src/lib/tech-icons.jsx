@@ -27,8 +27,13 @@ import {
   SiNasa,
   SiVite,
   SiTypescript,
+  SiCapacitor,
+  SiStripe,
+  SiPostgresql,
+  SiStorybook,
+  SiGrafana,
 } from "react-icons/si";
-import { Database, Sparkles, Brain, Boxes, Network, Activity, Code2, Flame, Cpu, Eye, Cloud, Link2, Rocket, Volume2, Zap } from "lucide-react";
+import { Database, Sparkles, Brain, Boxes, Network, Activity, Code2, Flame, Cpu, Eye, Cloud, Link2, Rocket, Volume2, Zap, QrCode } from "lucide-react";
 
 // adaptive => use currentColor (good for monochrome brands so they stay visible in dark/light)
 const TECH_META = {
@@ -89,6 +94,13 @@ const TECH_META = {
   TypeScript: { Icon: SiTypescript, color: "#3178C6" },
   Hono: { Icon: Zap, color: "#E36002" },
   "Meta CAPI": { Icon: Network, color: "#0081FB" },
+  Capacitor: { Icon: SiCapacitor, color: "#119EFF" },
+  "Stripe Terminal": { Icon: SiStripe, color: "#635BFF" },
+  PostgreSQL: { Icon: SiPostgresql, color: "#4169E1" },
+  Tinybird: { Icon: Database, color: "#00DDB3" },
+  Storybook: { Icon: SiStorybook, color: "#FF4785" },
+  "Google ML Kit": { Icon: QrCode, color: "#4285F4" },
+  Grafana: { Icon: SiGrafana, color: "#F46800" },
 };
 
 const DEFAULT = { Icon: Code2, adaptive: true };
