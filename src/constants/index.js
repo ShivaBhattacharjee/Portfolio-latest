@@ -520,6 +520,11 @@ export const experiences = [
         { text: "localStorage, IndexedDB, and mock APIs", bold: true },
         { text: " to showcase the organizer flow without sign-in." },
       ],
+      [
+        { text: "Developed " },
+        { text: "Storybook mock components", bold: true },
+        { text: " to build and test frontend UI components in isolation." },
+      ],
     ],
     techstacks: [
       "Hono",
