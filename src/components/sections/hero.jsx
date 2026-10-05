@@ -54,7 +54,7 @@ const socialLinks = [
   },
   {
     label: "LinkedIn",
-    href: "https://www.linkedin.com/in/shiva-bhattacharjee/",
+    href: "https://www.linkedin.com/in/sh1xva/",
     icon: <LinkedinIcon className="h-3.5 w-3.5" />,
     external: true,
     platform: "linkedin",
