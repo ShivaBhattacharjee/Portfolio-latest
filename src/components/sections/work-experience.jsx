@@ -303,7 +303,10 @@ function ExperiencePositionItem({ experience }) {
           >
             <ul className="w-full min-w-0 list-disc space-y-1.5 pt-2 pl-16 font-space-mono text-xs leading-relaxed text-muted-foreground marker:text-muted-foreground/40 md:space-y-2 md:text-sm">
               {responsibility.map((bullet, i) => (
-                <li key={i} className="break-words [overflow-wrap:anywhere]">
+                <li
+                  key={i}
+                  className="font-space-mono text-xs leading-relaxed break-words [overflow-wrap:anywhere] md:text-sm"
+                >
                   <ResponsibilitySegments bullet={bullet} />
                 </li>
               ))}

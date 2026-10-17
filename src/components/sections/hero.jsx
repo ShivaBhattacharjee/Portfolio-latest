@@ -556,7 +556,10 @@ const Hero = ({ contributionData = [], lifetimeTotal = 0 }) => {
                     {" :-"}
                     <ul className="mt-2 list-disc list-inside space-y-2 pl-4 marker:text-muted-foreground/40">
                     {points.map((point) => (
-                      <li key={point.body.map((seg) => seg.text).join("")}>
+                      <li
+                        key={point.body.map((seg) => seg.text).join("")}
+                        className="font-space-mono text-xs text-muted-foreground md:text-base md:leading-relaxed"
+                      >
                         <AchievementBody body={point.body} />
                         {point.link && (
                           <>
